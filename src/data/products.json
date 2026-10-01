@@ -1,0 +1,488 @@
+[
+  {
+    "id": "langsam-bookcase-80",
+    "name": "LÅNGSAM",
+    "description": "Bookcase, white, 80x28x202 cm",
+    "category": "storage",
+    "comparisonGroup": "bookcase-80",
+    "condition": "new",
+    "priceSek": 499,
+    "marginPct": 45,
+    "image": "/images/products/bookcase-a.svg",
+    "impact": {
+      "co2Kg": 51,
+      "waterL": 600,
+      "energyKWh": 60,
+      "lifespanYears": 10,
+      "transportKm": 3200,
+      "repairability": 3
+    },
+    "materials": "Particleboard, paper foil, plastic edging"
+  },
+  {
+    "id": "stadig-bookcase-80",
+    "name": "STADIG",
+    "description": "Bookcase, solid pine, 80x28x202 cm",
+    "category": "storage",
+    "comparisonGroup": "bookcase-80",
+    "condition": "new",
+    "priceSek": 699,
+    "marginPct": 40,
+    "image": "/images/products/bookcase-b.svg",
+    "impact": {
+      "co2Kg": 86,
+      "waterL": 1000,
+      "energyKWh": 72,
+      "lifespanYears": 25,
+      "transportKm": 1600,
+      "repairability": 8
+    },
+    "materials": "Solid pine, water-based lacquer"
+  },
+  {
+    "id": "stadig-bookcase-80-sh",
+    "name": "STADIG",
+    "description": "Bookcase, solid pine, 80x28x202 cm",
+    "category": "storage",
+    "comparisonGroup": "bookcase-80",
+    "condition": "secondhand",
+    "priceSek": 350,
+    "marginPct": 30,
+    "image": "/images/products/bookcase-b.svg",
+    "impact": {
+      "co2Kg": 9,
+      "waterL": 120,
+      "energyKWh": 9,
+      "lifespanYears": 17,
+      "transportKm": 40,
+      "repairability": 8
+    },
+    "materials": "Solid pine, water-based lacquer",
+    "secondhandNote": "Small scratch on the left side. Checked and cleaned by IKEA."
+  },
+  {
+    "id": "blanka-bookcase-80",
+    "name": "BLÄNKA",
+    "description": "Bookcase, high-gloss white, 80x30x202 cm",
+    "category": "storage",
+    "comparisonGroup": "bookcase-80",
+    "condition": "new",
+    "priceSek": 899,
+    "marginPct": 42,
+    "image": "/images/products/bookcase-c.svg",
+    "impact": {
+      "co2Kg": 70,
+      "waterL": 900,
+      "energyKWh": 110,
+      "lifespanYears": 8,
+      "transportKm": 7000,
+      "repairability": 2
+    },
+    "materials": "Fibreboard, high-gloss acrylic paint, glass"
+  },
+  {
+    "id": "kvicka-chest-4",
+    "name": "KVICKA",
+    "description": "Chest of 4 drawers, white, 70x92 cm",
+    "category": "storage",
+    "comparisonGroup": "chest-of-drawers",
+    "condition": "new",
+    "priceSek": 999,
+    "marginPct": 46,
+    "image": "/images/products/chest-a.svg",
+    "impact": {
+      "co2Kg": 90,
+      "waterL": 1100,
+      "energyKWh": 120,
+      "lifespanYears": 8,
+      "transportKm": 2200,
+      "repairability": 3
+    },
+    "materials": "Particleboard, fibreboard, paper foil"
+  },
+  {
+    "id": "gedigen-chest-4",
+    "name": "GEDIGEN",
+    "description": "Chest of 4 drawers, solid birch, 80x95 cm",
+    "category": "storage",
+    "comparisonGroup": "chest-of-drawers",
+    "condition": "new",
+    "priceSek": 1995,
+    "marginPct": 41,
+    "image": "/images/products/chest-b.svg",
+    "impact": {
+      "co2Kg": 210,
+      "waterL": 1900,
+      "energyKWh": 160,
+      "lifespanYears": 18,
+      "transportKm": 2000,
+      "repairability": 6
+    },
+    "materials": "Solid birch, clear lacquer"
+  },
+  {
+    "id": "gedigen-chest-4-sh",
+    "name": "GEDIGEN",
+    "description": "Chest of 4 drawers, solid birch, 80x95 cm",
+    "category": "storage",
+    "comparisonGroup": "chest-of-drawers",
+    "condition": "secondhand",
+    "priceSek": 1100,
+    "marginPct": 32,
+    "image": "/images/products/chest-b.svg",
+    "impact": {
+      "co2Kg": 24,
+      "waterL": 220,
+      "energyKWh": 20,
+      "lifespanYears": 11,
+      "transportKm": 35,
+      "repairability": 6
+    },
+    "materials": "Solid birch, clear lacquer",
+    "secondhandNote": "One drawer knob replaced with a new one. Checked and cleaned by IKEA."
+  },
+  {
+    "id": "skimra-chest-4",
+    "name": "SKIMRA",
+    "description": "Chest of 4 drawers, high-gloss grey, 80x90 cm",
+    "category": "storage",
+    "comparisonGroup": "chest-of-drawers",
+    "condition": "new",
+    "priceSek": 1795,
+    "marginPct": 43,
+    "image": "/images/products/chest-c.svg",
+    "impact": {
+      "co2Kg": 140,
+      "waterL": 1400,
+      "energyKWh": 190,
+      "lifespanYears": 7,
+      "transportKm": 7500,
+      "repairability": 2
+    },
+    "materials": "Fibreboard, high-gloss acrylic paint, metal rails"
+  },
+  {
+    "id": "sovstund-bed-160",
+    "name": "SOVSTUND",
+    "description": "Bed frame, white, 160x200 cm",
+    "category": "bedroom",
+    "comparisonGroup": "bed-frame-160",
+    "condition": "new",
+    "priceSek": 1495,
+    "marginPct": 45,
+    "image": "/images/products/bed-a.svg",
+    "impact": {
+      "co2Kg": 110,
+      "waterL": 1400,
+      "energyKWh": 150,
+      "lifespanYears": 10,
+      "transportKm": 1500,
+      "repairability": 4
+    },
+    "materials": "Particleboard, fibreboard, steel slats"
+  },
+  {
+    "id": "furulund-bed-160",
+    "name": "FURULUND",
+    "description": "Bed frame, solid pine, 160x200 cm",
+    "category": "bedroom",
+    "comparisonGroup": "bed-frame-160",
+    "condition": "new",
+    "priceSek": 2995,
+    "marginPct": 40,
+    "image": "/images/products/bed-b.svg",
+    "impact": {
+      "co2Kg": 150,
+      "waterL": 2200,
+      "energyKWh": 160,
+      "lifespanYears": 30,
+      "transportKm": 1100,
+      "repairability": 9
+    },
+    "materials": "Solid pine, wax oil"
+  },
+  {
+    "id": "furulund-bed-160-sh",
+    "name": "FURULUND",
+    "description": "Bed frame, solid pine, 160x200 cm",
+    "category": "bedroom",
+    "comparisonGroup": "bed-frame-160",
+    "condition": "secondhand",
+    "priceSek": 1600,
+    "marginPct": 30,
+    "image": "/images/products/bed-b.svg",
+    "impact": {
+      "co2Kg": 18,
+      "waterL": 250,
+      "energyKWh": 20,
+      "lifespanYears": 18,
+      "transportKm": 45,
+      "repairability": 9
+    },
+    "materials": "Solid pine, wax oil",
+    "secondhandNote": "Light marks on the headboard. Checked and cleaned by IKEA."
+  },
+  {
+    "id": "velura-bed-160",
+    "name": "VELURA",
+    "description": "Upholstered bed frame, velvet, 160x200 cm",
+    "category": "bedroom",
+    "comparisonGroup": "bed-frame-160",
+    "condition": "new",
+    "priceSek": 3495,
+    "marginPct": 44,
+    "image": "/images/products/bed-c.svg",
+    "impact": {
+      "co2Kg": 210,
+      "waterL": 3300,
+      "energyKWh": 260,
+      "lifespanYears": 9,
+      "transportKm": 7800,
+      "repairability": 2
+    },
+    "materials": "Polyester velvet, foam, plywood, steel"
+  },
+  {
+    "id": "nattklar-bedside",
+    "name": "NATTKLAR",
+    "description": "Bedside table, white, 40x40 cm",
+    "category": "bedroom",
+    "comparisonGroup": "bedside-table",
+    "condition": "new",
+    "priceSek": 199,
+    "marginPct": 48,
+    "image": "/images/products/bedside-a.svg",
+    "impact": {
+      "co2Kg": 18,
+      "waterL": 220,
+      "energyKWh": 22,
+      "lifespanYears": 8,
+      "transportKm": 2300,
+      "repairability": 2
+    },
+    "materials": "Particleboard, paper foil"
+  },
+  {
+    "id": "bjorkdal-bedside",
+    "name": "BJÖRKDAL",
+    "description": "Bedside table, solid birch, 45x40 cm",
+    "category": "bedroom",
+    "comparisonGroup": "bedside-table",
+    "condition": "new",
+    "priceSek": 599,
+    "marginPct": 42,
+    "image": "/images/products/bedside-b.svg",
+    "impact": {
+      "co2Kg": 26,
+      "waterL": 380,
+      "energyKWh": 25,
+      "lifespanYears": 25,
+      "transportKm": 900,
+      "repairability": 8
+    },
+    "materials": "Solid birch, clear lacquer"
+  },
+  {
+    "id": "bjorkdal-bedside-sh",
+    "name": "BJÖRKDAL",
+    "description": "Bedside table, solid birch, 45x40 cm",
+    "category": "bedroom",
+    "comparisonGroup": "bedside-table",
+    "condition": "secondhand",
+    "priceSek": 300,
+    "marginPct": 30,
+    "image": "/images/products/bedside-b.svg",
+    "impact": {
+      "co2Kg": 3,
+      "waterL": 45,
+      "energyKWh": 3,
+      "lifespanYears": 15,
+      "transportKm": 30,
+      "repairability": 8
+    },
+    "materials": "Solid birch, clear lacquer",
+    "secondhandNote": "Tiny dent on the top. Checked and cleaned by IKEA."
+  },
+  {
+    "id": "nattglans-bedside",
+    "name": "NATTGLANS",
+    "description": "Bedside table, high-gloss black, 45x35 cm",
+    "category": "bedroom",
+    "comparisonGroup": "bedside-table",
+    "condition": "new",
+    "priceSek": 499,
+    "marginPct": 44,
+    "image": "/images/products/bedside-c.svg",
+    "impact": {
+      "co2Kg": 30,
+      "waterL": 330,
+      "energyKWh": 45,
+      "lifespanYears": 7,
+      "transportKm": 1300,
+      "repairability": 2
+    },
+    "materials": "Fibreboard, high-gloss acrylic paint"
+  },
+  {
+    "id": "matstund-table-4",
+    "name": "MATSTUND",
+    "description": "Dining table, white, 120x75 cm, seats 4",
+    "category": "kitchen",
+    "comparisonGroup": "dining-table-4",
+    "condition": "new",
+    "priceSek": 1299,
+    "marginPct": 45,
+    "image": "/images/products/table-a.svg",
+    "impact": {
+      "co2Kg": 85,
+      "waterL": 1200,
+      "energyKWh": 110,
+      "lifespanYears": 10,
+      "transportKm": 2300,
+      "repairability": 3
+    },
+    "materials": "Particleboard, paper foil, steel legs"
+  },
+  {
+    "id": "bordsro-table-4",
+    "name": "BORDSRO",
+    "description": "Dining table, solid oak, 130x80 cm, seats 4",
+    "category": "kitchen",
+    "comparisonGroup": "dining-table-4",
+    "condition": "new",
+    "priceSek": 3495,
+    "marginPct": 40,
+    "image": "/images/products/table-b.svg",
+    "impact": {
+      "co2Kg": 230,
+      "waterL": 2800,
+      "energyKWh": 170,
+      "lifespanYears": 20,
+      "transportKm": 2600,
+      "repairability": 6
+    },
+    "materials": "Solid oak, natural oil"
+  },
+  {
+    "id": "bordsro-table-4-sh",
+    "name": "BORDSRO",
+    "description": "Dining table, solid oak, 130x80 cm, seats 4",
+    "category": "kitchen",
+    "comparisonGroup": "dining-table-4",
+    "condition": "secondhand",
+    "priceSek": 1900,
+    "marginPct": 30,
+    "image": "/images/products/table-b.svg",
+    "impact": {
+      "co2Kg": 26,
+      "waterL": 320,
+      "energyKWh": 20,
+      "lifespanYears": 12,
+      "transportKm": 40,
+      "repairability": 6
+    },
+    "materials": "Solid oak, natural oil",
+    "secondhandNote": "Re-oiled top with a few visible rings. Checked and cleaned by IKEA."
+  },
+  {
+    "id": "glaskant-table-4",
+    "name": "GLASKANT",
+    "description": "Dining table, glass top, 120x80 cm, seats 4",
+    "category": "kitchen",
+    "comparisonGroup": "dining-table-4",
+    "condition": "new",
+    "priceSek": 2495,
+    "marginPct": 43,
+    "image": "/images/products/table-c.svg",
+    "impact": {
+      "co2Kg": 160,
+      "waterL": 2100,
+      "energyKWh": 240,
+      "lifespanYears": 9,
+      "transportKm": 7600,
+      "repairability": 2
+    },
+    "materials": "Tempered glass, chrome-plated steel"
+  },
+  {
+    "id": "steklatt-pan-28",
+    "name": "STEKLÄTT",
+    "description": "Frying pan, non-stick, 28 cm",
+    "category": "kitchen",
+    "comparisonGroup": "frying-pan",
+    "condition": "new",
+    "priceSek": 149,
+    "marginPct": 50,
+    "image": "/images/products/pan-a.svg",
+    "impact": {
+      "co2Kg": 6,
+      "waterL": 60,
+      "energyKWh": 14,
+      "lifespanYears": 3,
+      "transportKm": 2600,
+      "repairability": 1
+    },
+    "materials": "Aluminium, PTFE non-stick coating"
+  },
+  {
+    "id": "gjuten-pan-28",
+    "name": "GJUTEN",
+    "description": "Frying pan, cast iron, 28 cm",
+    "category": "kitchen",
+    "comparisonGroup": "frying-pan",
+    "condition": "new",
+    "priceSek": 399,
+    "marginPct": 42,
+    "image": "/images/products/pan-b.svg",
+    "impact": {
+      "co2Kg": 14,
+      "waterL": 90,
+      "energyKWh": 30,
+      "lifespanYears": 30,
+      "transportKm": 1200,
+      "repairability": 10
+    },
+    "materials": "Cast iron, vegetable-oil seasoning"
+  },
+  {
+    "id": "gjuten-pan-28-sh",
+    "name": "GJUTEN",
+    "description": "Frying pan, cast iron, 28 cm",
+    "category": "kitchen",
+    "comparisonGroup": "frying-pan",
+    "condition": "secondhand",
+    "priceSek": 180,
+    "marginPct": 38,
+    "image": "/images/products/pan-b.svg",
+    "impact": {
+      "co2Kg": 1.5,
+      "waterL": 12,
+      "energyKWh": 3,
+      "lifespanYears": 18,
+      "transportKm": 30,
+      "repairability": 10
+    },
+    "materials": "Cast iron, vegetable-oil seasoning",
+    "secondhandNote": "Re-seasoned and ready to use. Checked and cleaned by IKEA."
+  },
+  {
+    "id": "kopparglans-pan-28",
+    "name": "KOPPARGLANS",
+    "description": "Frying pan, copper-look ceramic coating, 28 cm",
+    "category": "kitchen",
+    "comparisonGroup": "frying-pan",
+    "condition": "new",
+    "priceSek": 349,
+    "marginPct": 46,
+    "image": "/images/products/pan-c.svg",
+    "impact": {
+      "co2Kg": 9,
+      "waterL": 80,
+      "energyKWh": 20,
+      "lifespanYears": 2,
+      "transportKm": 7400,
+      "repairability": 1
+    },
+    "materials": "Aluminium, ceramic coating, copper-coloured finish"
+  }
+]

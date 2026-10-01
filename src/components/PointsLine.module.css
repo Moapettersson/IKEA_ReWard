@@ -1,0 +1,45 @@
+.line {
+  display: flex;
+  gap: var(--s-3);
+  align-items: flex-start;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex: none;
+  border-radius: var(--r-circle);
+  background: var(--c-yellow);
+  color: var(--c-black);
+}
+
+.main {
+  font: var(--t-body);
+  color: var(--c-text-1);
+}
+
+.main strong {
+  font-weight: var(--fw-bold);
+}
+
+.brand {
+  color: var(--c-blue);
+}
+
+.sub {
+  font: var(--t-caption);
+  color: var(--c-text-3);
+  margin-top: 2px;
+}
+
+.link {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--c-text-1);
+  text-decoration: underline;
+}

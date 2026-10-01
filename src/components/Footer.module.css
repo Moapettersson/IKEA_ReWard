@@ -1,0 +1,27 @@
+.footer {
+  margin-top: var(--s-10);
+  background: var(--c-grey-50);
+  padding: var(--s-7) 0;
+}
+
+.inner {
+  display: grid;
+  gap: var(--s-5);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-5);
+}
+
+.links a {
+  font: var(--t-body-strong);
+  color: var(--c-text-1);
+}
+
+.disclaimer {
+  max-width: 72ch;
+  font: var(--t-caption);
+  color: var(--c-text-3);
+}

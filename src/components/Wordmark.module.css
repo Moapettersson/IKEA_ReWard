@@ -1,0 +1,10 @@
+.wordmark {
+  font: var(--t-h2);
+  color: var(--c-blue);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.reward {
+  color: var(--c-black);
+}

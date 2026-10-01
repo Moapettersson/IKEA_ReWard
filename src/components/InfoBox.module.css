@@ -1,0 +1,14 @@
+.box {
+  padding: var(--s-4);
+  border-radius: var(--r-m);
+  font: var(--t-body);
+}
+
+.grey {
+  background: var(--c-grey-50);
+}
+
+.bordered {
+  background: var(--c-white);
+  border: 1px solid var(--c-grey-200);
+}

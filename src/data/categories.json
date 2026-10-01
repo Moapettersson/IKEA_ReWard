@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "storage",
+    "name": "Storage & organisation",
+    "description": "Bookcases and chests of drawers. Our pilot category, because IKEA sells a lot of it both new and second-hand.",
+    "isPilot": true
+  },
+  {
+    "slug": "bedroom",
+    "name": "Bedroom",
+    "description": "Bed frames and bedside tables.",
+    "isPilot": false
+  },
+  {
+    "slug": "kitchen",
+    "name": "Kitchen & dining",
+    "description": "Dining tables and frying pans.",
+    "isPilot": false
+  }
+]

@@ -1,0 +1,15 @@
+.empty {
+  display: grid;
+  gap: var(--s-3);
+  font: var(--t-body-l);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-5);
+}
+
+.links a {
+  font: var(--t-body-strong);
+}

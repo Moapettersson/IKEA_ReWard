@@ -1,0 +1,47 @@
+.wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  vertical-align: middle;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex: none;
+  border-radius: var(--r-none);
+  font: var(--t-body-strong);
+}
+
+.label {
+  font: var(--t-body-strong);
+  color: var(--c-text-1);
+}
+
+.tierA {
+  background: var(--c-tier-a);
+  color: var(--c-text-inverse);
+}
+
+.tierB {
+  background: var(--c-tier-b);
+  color: var(--c-text-1);
+}
+
+.tierC {
+  background: var(--c-tier-c);
+  color: var(--c-text-1);
+}
+
+.tierD {
+  background: var(--c-tier-d);
+  color: var(--c-text-1);
+}
+
+.tierE {
+  background: var(--c-tier-e);
+  color: var(--c-text-2);
+}

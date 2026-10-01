@@ -1,0 +1,35 @@
+.row {
+  border-bottom: 1px solid var(--c-grey-200);
+}
+
+.row:first-of-type {
+  border-top: 1px solid var(--c-grey-200);
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+  font: var(--t-h3);
+  color: var(--c-text-1);
+  cursor: pointer;
+  list-style: none;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.chevron {
+  flex: none;
+  transition: transform var(--dur) var(--ease);
+}
+
+.row[open] .chevron {
+  transform: rotate(90deg);
+}
+
+.panel {
+  padding: 0 0 var(--s-5);
+}

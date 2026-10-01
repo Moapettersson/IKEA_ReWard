@@ -1,0 +1,101 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  min-width: 0;
+}
+
+.imageLink {
+  position: relative;
+  display: block;
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.body {
+  display: flex;
+  gap: var(--s-2);
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  min-width: 0;
+}
+
+.name {
+  font: var(--t-body-strong);
+}
+
+.nameLink {
+  color: var(--c-text-1);
+  text-decoration: none;
+}
+
+.nameLink:hover {
+  text-decoration: underline;
+}
+
+.description {
+  font: var(--t-body);
+  color: var(--c-text-1);
+}
+
+.price {
+  margin-top: var(--s-2);
+}
+
+.reward {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-1) var(--s-2);
+  margin-top: var(--s-2);
+}
+
+.points {
+  font: var(--t-caption-strong);
+  color: var(--c-text-1);
+}
+
+.after {
+  font: var(--t-caption);
+  color: var(--c-text-3);
+}
+
+.add {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-s);
+  height: var(--control-s);
+  flex: none;
+  border: 0;
+  border-radius: var(--r-circle);
+  background: var(--c-blue);
+  color: var(--c-text-inverse);
+  transition: background-color var(--dur) var(--ease);
+}
+
+.add:hover {
+  background: var(--c-blue-hover);
+}
+
+.add:active {
+  background: var(--c-blue-pressed);
+}
+
+.plus {
+  position: absolute;
+  top: 6px;
+  right: 7px;
+  font: var(--t-caption-strong);
+}

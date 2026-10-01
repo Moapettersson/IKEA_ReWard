@@ -1,0 +1,19 @@
+{
+  "weights": {
+    "co2": 30,
+    "repairability": 20,
+    "lifespan": 20,
+    "water": 10,
+    "energy": 10,
+    "transport": 10
+  },
+  "tiers": [
+    { "tier": "A", "minScore": 80, "pct": 10 },
+    { "tier": "B", "minScore": 60, "pct": 6 },
+    { "tier": "C", "minScore": 40, "pct": 3 },
+    { "tier": "D", "minScore": 20, "pct": 1 },
+    { "tier": "E", "minScore": 0, "pct": 0 }
+  ],
+  "secondhandBonusPct": 5,
+  "maxShareOfMargin": 0.4
+}
