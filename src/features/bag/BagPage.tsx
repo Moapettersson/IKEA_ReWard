@@ -104,10 +104,6 @@ export function BagPage() {
               <dd>{formatKg(bag.co2AvoidedPerYearKg)}</dd>
             </div>
           </dl>
-          <p className={styles.hint}>
-            Compared with the cheapest new option in each product group. You can use your points
-            at checkout.
-          </p>
           <Button to="/demo/checkout" variant="emphasised" size="l" fullWidth>
             Continue to checkout
           </Button>

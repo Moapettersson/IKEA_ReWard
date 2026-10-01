@@ -46,7 +46,7 @@ export function CheckoutPage() {
     <div className="page">
       <div className={shop.section}>
         <h1 className={shop.title}>Checkout</h1>
-        <p className={shop.lead}>This is a simulation. Nothing is paid and nothing is delivered.</p>
+        <p className={shop.lead}>Simulated. Nothing is paid or delivered.</p>
       </div>
       <div className={styles.layout}>
         <div className={styles.summary}>
@@ -89,10 +89,7 @@ export function CheckoutPage() {
                   />
                 </div>
               )}
-              <p className={styles.hint}>
-                You earn points on the part you pay with money, so using points lowers what you
-                earn a little.
-              </p>
+              <p className={styles.hint}>You earn points only on what you pay with money.</p>
             </div>
           </InfoBox>
         </div>

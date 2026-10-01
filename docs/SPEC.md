@@ -27,7 +27,7 @@ Secondary user: **IKEA category/commercial manager** who sets the cashback model
 | Final slides + short pitch video | `/` section "Pitch" (embedded) |
 | Embedded prototype or demo video | `/` section "Try the prototype" (link + demo video) |
 | Summary, team info, contact, references, GenAI statement | `/` sections |
-| "Show what's real vs conceptual" | Real vs simulated table on `/` and disclaimer on every page |
+| "Show what's real vs conceptual" | "Simulated" note in the prototype section and disclaimer on every page |
 
 ## 2. Scope
 
@@ -154,7 +154,7 @@ Rules:
 - The `bookcase-80` group must reproduce the worked example in `CASHBACK-MODEL.md` section 10.
 - At least one product must hit the margin cap with the default model, so the admin demo can show it.
 - Second-hand impact values cover only the **remaining life**: `co2Kg`, `waterL`, `energyKWh` are refurbishment + transport only (roughly 10-20 % of the new version), `lifespanYears` is the remaining expected life (roughly 60 % of new), `repairability` is unchanged.
-- Scores are relative within a comparison group (see `CASHBACK-MODEL.md` section 2). This is a known simplification and is disclosed in "Real vs simulated" on `/`.
+- Scores are relative within a comparison group (see `CASHBACK-MODEL.md` section 2). This is a known simplification of the prototype.
 - A second-hand product reuses the SVG image of its new version.
 
 ### 4.2 Default wallet
@@ -168,22 +168,19 @@ All `/demo/*` screens share the demo header and footer (see `DESIGN.md` section 
 
 ### 5.1 `/` Project website
 
-Single long page with anchor navigation, sections in this order. Copy in English, IKEA tone of voice.
+Single long page with anchor navigation, sections in this order. Copy in English, IKEA tone of voice. **Keep text short:** one or two sentences per point (team feedback 2026-10-01).
 
-1. **Hero:** product name, one-sentence value proposition, primary button "Try the prototype" → `/demo`, secondary "Watch the pitch" → #pitch.
-2. **The problem:** the tension from the challenge (lower prices → more sales → more emissions), Maria's situation, one key insight from our research.
-3. **Our solution:** how ReWard works in 3 steps (diagram: product data → score → cashback), with the worked example numbers. Name all six factors, including transport.
-4. **Try the prototype:** screenshot + link to `/demo`, plus embedded demo video (YouTube/Vimeo iframe or `<video>`). Until the demo is live, this section says "Coming soon" instead of linking.
-5. **Features:** customer flow and admin panel, each with a screenshot and 2-3 lines.
-6. **Sustainability impact:** the five dimensions (individual, social, economic, technical, environmental), one short paragraph each, taken from our capstone answers. Include the overconsumption risk and how the second-hand bonus and margin cap address it.
-7. **Real vs simulated:** table of what the prototype does now vs what needs real IKEA data (LCA data, margins, points system integration). Include a row for scoring: the prototype scores relative to the comparison group; a real version would score against absolute category benchmarks from LCA data.
-8. **Process:** research methods (empathic modelling, persona work, gap analysis of the current IKEA system), then a user test log with one entry per weekly test and what changed because of it. Only real results; until the first test, say when testing starts.
-9. **Next steps:** pilot in one category (storage), then scale; real LCA data; integration with IKEA Family.
-10. **Pitch:** embedded pitch video + final slides (Canva embed). `id="pitch"`. Until the final pitch is recorded, the video slot says "Pitch video coming after the final pitch".
-11. **Team:** 5 members (Moa Pettersson, Sofia Nguyen, Isak Treptow, Sara Salam, Max Fägersten): photo and name only. Missing photos show a grey square with initials.
-12. **References:** numbered list of sources.
-13. **Use of generative AI:** Claude (Anthropic) helped a lot with the code (Claude Code wrote most of the prototype and site from this spec), with brainstorming, and with text support (correcting and improving our writing). The idea, model and decisions are the team's; all output was reviewed.
-14. **Contact:** moapett@chalmers.se only (other team emails stay private unless they agree) + footer disclaimer.
+1. **Hero:** centred. Product name, one-line value proposition, one large blue "Try the prototype" button → `/demo`, and a small "Watch the pitch" text link → #pitch (one button only, to avoid the "centred hero with two buttons" anti-pattern).
+2. **The problem:** the challenge question and Maria's situation in two sentences.
+3. **Our solution:** 3 steps (score → cashback → points), the worked example table, and three short sustainability points (less climate impact, reuse first, still profitable).
+4. **Try the prototype:** two sentences + "simulated data" note, screenshot, links to `/demo` and `/demo/admin`, and two feature screenshots (customer and IKEA) with one line each.
+5. **Pitch:** slides (Canva embed) and pitch video only, no text. Required by the course. `id="pitch"`.
+6. **Team:** 5 members (Moa Pettersson, Sofia Nguyen, Isak Treptow, Sara Salam, Max Fägersten): photo and name only. Missing photos show a grey square with initials.
+7. **References:** numbered list of sources.
+8. **Use of generative AI:** one short paragraph: Claude helped with code, brainstorming and correcting text; the team reviewed everything. Required by the course.
+9. **Contact:** moapett@chalmers.se + footer disclaimer.
+
+Removed on 2026-10-01 to keep the focus: separate Features, Sustainability impact, Real vs simulated, Process and Next steps sections. Sustainability now lives in "Our solution", and "simulated" is stated in the prototype section, the demo utility bar and the footer.
 
 Content comes from the team's worksheet and pitch script. Nothing is invented: claims we cannot back up are marked TODO in the source until the team confirms them.
 
@@ -309,7 +306,7 @@ Layout: left column settings, right column live results. From 1200px side by sid
 
 Owner of all milestones: Moa Pettersson. Teammates review when they can.
 
-**First website deadline: 2026-10-08.** Live on that date: M0, the tokens and global styles from M1, and the project website (M5) with all 14 sections. Sections without content yet show clearly marked placeholders, and "Try the prototype" says "Coming soon". The engine, demo and admin (M2-M4) follow after. Later course dates: TODO.
+**First website deadline: 2026-10-08.** Live on that date: M0, the tokens and global styles from M1, and the project website (M5) with all 9 sections. Sections without content yet show clearly marked placeholders, and "Try the prototype" says "Coming soon". The engine, demo and admin (M2-M4) follow after. Later course dates: TODO.
 
 | # | Milestone | Done when | Target |
 |---|---|---|---|
@@ -318,7 +315,7 @@ Owner of all milestones: Moa Pettersson. Teammates review when they can.
 | M2 | Engine + data | `cashback.ts` with all tests green, `products.json` (24 products) matching section 4.1 rules | TODO |
 | M3 | Customer flow | 5.2 to 5.8, 5.11 working end to end with persistence | TODO |
 | M4 | Admin | 5.9 working, saved changes reflected in shop | TODO |
-| M5 | Project website | All 14 sections of 5.1 with real content, video and slides embedded | first version 2026-10-08 |
+| M5 | Project website | All 9 sections of 5.1 with real content, video and slides embedded | first version 2026-10-08 |
 | M6 | Polish | Accessibility pass, responsive pass, anti-pattern check (`DESIGN.md` section 9), first user test done and fixes merged | TODO |
 
 Create one GitHub issue per screen/component with the acceptance criteria copied from this spec.

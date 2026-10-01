@@ -197,7 +197,7 @@ Reject a PR if it contains any of these:
 - Fonts other than Noto Sans, or weights other than 400/700.
 - Emoji or sparkle icons anywhere in the UI.
 - Icons in coloured rounded squares ("feature grid" look).
-- Centred paragraphs, centred hero with two buttons side by side.
+- Centred paragraphs, centred hero with two buttons side by side. (The project site hero is centred, but with one button and a text link.)
 - Purple, teal, indigo or any colour not in section 1.
 - Title Case headings.
 - Animated number counters, confetti, parallax, bounce easing.
