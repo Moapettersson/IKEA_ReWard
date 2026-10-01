@@ -1,0 +1,24 @@
+.price {
+  color: var(--c-text-1);
+  white-space: nowrap;
+}
+
+.l {
+  font: var(--t-price-l);
+}
+
+.m {
+  font: var(--t-price-m);
+}
+
+.s {
+  font: var(--t-body-strong);
+}
+
+.suffix {
+  font: var(--t-price-suffix);
+}
+
+.s .suffix {
+  font: inherit;
+}

@@ -1,0 +1,12 @@
+.frame {
+  aspect-ratio: 1 / 1;
+  background: var(--c-grey-50);
+  border-radius: var(--r-none);
+  overflow: hidden;
+}
+
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

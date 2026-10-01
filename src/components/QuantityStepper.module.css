@@ -1,0 +1,41 @@
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  height: var(--control-m);
+  border: 1px solid var(--c-grey-500);
+  border-radius: var(--r-s);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-s);
+  height: 100%;
+  border: 0;
+  background: none;
+  color: var(--c-text-1);
+  border-radius: var(--r-s);
+}
+
+.button:disabled {
+  color: var(--c-disabled-text);
+  cursor: not-allowed;
+}
+
+.input {
+  width: 40px;
+  height: 100%;
+  border: 0;
+  background: none;
+  text-align: center;
+  font: var(--t-body-strong);
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

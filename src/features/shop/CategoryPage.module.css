@@ -1,0 +1,150 @@
+.title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3);
+}
+
+.layout {
+  display: grid;
+  gap: var(--s-6);
+  padding-top: var(--s-6);
+}
+
+.sidebar {
+  display: none;
+}
+
+.filterTitle {
+  font: var(--t-h3);
+  margin-bottom: var(--s-4);
+}
+
+.fieldset {
+  display: grid;
+  gap: var(--s-2);
+  margin: 0 0 var(--s-5);
+  padding: 0;
+  border: 0;
+}
+
+.fieldset legend {
+  font: var(--t-body-strong);
+  color: var(--c-text-1);
+  margin-bottom: var(--s-2);
+  padding: 0;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  min-height: 32px;
+  font: var(--t-body);
+  color: var(--c-text-1);
+  cursor: pointer;
+}
+
+.check input {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--c-black);
+  border-radius: var(--r-s);
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  margin-bottom: var(--s-5);
+}
+
+.mobileFilters summary {
+  display: inline-flex;
+  align-items: center;
+  height: var(--control-s);
+  padding: 0 var(--s-4);
+  border-radius: var(--r-pill);
+  background: var(--c-grey-50);
+  font: var(--t-body-strong);
+  color: var(--c-text-1);
+  cursor: pointer;
+  list-style: none;
+}
+
+.mobileFilters summary::-webkit-details-marker {
+  display: none;
+}
+
+.mobileFilterPanel {
+  padding-top: var(--s-4);
+}
+
+.sort {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  font: var(--t-body-strong);
+  color: var(--c-text-1);
+}
+
+.sort select {
+  height: var(--control-s);
+  padding: 0 var(--s-3);
+  border: 1px solid var(--c-grey-500);
+  border-radius: var(--r-s);
+  background: var(--c-white);
+  font: var(--t-body);
+  color: var(--c-text-1);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-8) var(--s-4);
+}
+
+.empty {
+  font: var(--t-body-l);
+  padding: var(--s-6) 0;
+}
+
+@media (max-width: 599px) {
+  .toolbar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+
+  .toolbar > p {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .layout {
+    grid-template-columns: var(--filter-column) minmax(0, 1fr);
+  }
+
+  .sidebar {
+    display: block;
+  }
+
+  .mobileFilters {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,94 @@
+.balance {
+  padding-top: var(--s-5);
+}
+
+.balanceNumber {
+  font: var(--t-display);
+  color: var(--c-text-1);
+}
+
+.balanceText {
+  font: var(--t-body-l);
+  color: var(--c-text-2);
+}
+
+.totals {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-4);
+}
+
+.totals div {
+  padding: var(--s-4);
+  background: var(--c-grey-50);
+}
+
+.totals dt {
+  font: var(--t-body);
+  color: var(--c-text-2);
+}
+
+.totals dd {
+  margin-top: var(--s-1);
+  font: var(--t-h1);
+  color: var(--c-text-1);
+}
+
+.tableWrap {
+  position: relative;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font: var(--t-body);
+  color: var(--c-text-1);
+}
+
+.table th {
+  font: var(--t-body-strong);
+  text-align: left;
+  padding: var(--s-3) var(--s-3) var(--s-3) 0;
+  border-bottom: 1px solid var(--c-grey-500);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: var(--s-3) var(--s-3) var(--s-3) 0;
+  border-bottom: 1px solid var(--c-grey-200);
+  vertical-align: middle;
+}
+
+.table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.how {
+  display: grid;
+  gap: var(--s-6);
+}
+
+.howText {
+  display: grid;
+  gap: var(--s-3);
+  font: var(--t-body-l);
+  max-width: 60ch;
+}
+
+.howText strong {
+  color: var(--c-text-1);
+}
+
+@media (min-width: 900px) {
+  .totals {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .how {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    align-items: start;
+  }
+}

@@ -1,0 +1,104 @@
+/* Design tokens. Source: docs/DESIGN.md section 10. Font files are imported in main.tsx. */
+
+:root {
+  /* colour: neutrals */
+  --c-white: #ffffff;
+  --c-grey-50: #f5f5f5;
+  --c-grey-200: #dfdfdf;
+  --c-grey-300: #cccccc;
+  --c-grey-500: #929292;
+  --c-grey-700: #484848;
+  --c-black: #111111;
+  --c-text-1: #111111;
+  --c-text-2: #484848;
+  --c-text-3: #767676;
+  --c-text-inverse: #ffffff;
+
+  /* colour: brand + semantic */
+  --c-blue: #0058a3;
+  --c-blue-hover: #004f93;
+  --c-blue-pressed: #003e72;
+  --c-yellow: #ffdb00;
+  --c-green: #0a8a00;
+  --c-sustainability: #37b886;
+  --c-orange: #f26a2f;
+  --c-orange-text: #ca5008;
+  --c-red: #e00751;
+  --c-price-red: #cc0008;
+
+  /* colour: interactive */
+  --c-primary: #111111;
+  --c-primary-hover: #333333;
+  --c-primary-pressed: #000000;
+  --c-secondary-bg: #f5f5f5;
+  --c-secondary-bg-hover: #dfdfdf;
+  --c-secondary-bg-pressed: #cccccc;
+  --c-border-subtle: #929292;
+  --c-border-subtle-hover: #111111;
+  --c-disabled-bg: #cccccc;
+  --c-disabled-text: #929292;
+
+  /* tiers */
+  --c-tier-a: #0a8a00;
+  --c-tier-b: #37b886;
+  --c-tier-c: #ffdb00;
+  --c-tier-d: #f26a2f;
+  --c-tier-e: #dfdfdf;
+
+  /* typography */
+  --font: 'Noto Sans', system-ui, sans-serif;
+  --fw-regular: 400;
+  --fw-bold: 700;
+  --t-display: 700 40px/50px var(--font);
+  --t-h1: 700 24px/30px var(--font);
+  --t-h2: 700 20px/28px var(--font);
+  --t-h3: 700 16px/24px var(--font);
+  --t-lead: 400 20px/32px var(--font);
+  --t-body-l: 400 16px/24px var(--font);
+  --t-body: 400 14px/22px var(--font);
+  --t-body-strong: 700 14px/18px var(--font);
+  --t-caption: 400 12px/16px var(--font);
+  --t-caption-strong: 700 12px/16px var(--font);
+  --t-price-l: 700 32px/40px var(--font);
+  --t-price-m: 700 28px/28px var(--font);
+  --t-price-suffix: 700 14px/14px var(--font);
+
+  /* radius */
+  --r-none: 0;
+  --r-s: 4px;
+  --r-m: 8px;
+  --r-pill: 64px;
+  --r-circle: 50%;
+
+  /* spacing */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 40px;
+  --s-8: 48px;
+  --s-9: 64px;
+  --s-10: 80px;
+
+  /* sizes */
+  --control-l: 56px;
+  --control-m: 48px;
+  --control-s: 40px;
+  --icon: 24px;
+  --content-max: 1600px;
+  --gutter: 20px;
+  --filter-column: 220px;
+
+  /* overlays only (toast, dropdown): never on cards */
+  --shadow-overlay: 0 4px 16px rgba(17, 17, 17, 0.2);
+  --z-overlay: 50;
+
+  /* motion */
+  --ease: cubic-bezier(0.4, 0, 0.4, 1);
+  --dur: 200ms;
+}
+
+@media (min-width: 600px) { :root { --gutter: 32px; } }
+@media (min-width: 1200px) { :root { --gutter: 48px; } }

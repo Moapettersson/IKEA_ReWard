@@ -1,0 +1,18 @@
+.secondhand {
+  display: inline-block;
+  padding: 3px 11px;
+  background: var(--c-black);
+  color: var(--c-text-inverse);
+  font: var(--t-caption-strong);
+  border-radius: var(--r-none);
+}
+
+.pilot {
+  display: inline-block;
+  padding: var(--s-1) 6px;
+  background: var(--c-white);
+  color: var(--c-text-1);
+  font: var(--t-caption-strong);
+  border: 1px solid var(--c-grey-500);
+  border-radius: var(--r-none);
+}
