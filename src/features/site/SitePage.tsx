@@ -28,7 +28,7 @@ import styles from './SitePage.module.css';
 const NAV = [
   { id: 'problem', label: 'Problem' },
   { id: 'solution', label: 'Solution' },
-  { id: 'evaluation', label: 'Evaluation' },
+  { id: 'evaluation', label: 'Design thinking' },
   { id: 'sustainability', label: 'Sustainability' },
   { id: 'prototype', label: 'Prototype' },
   { id: 'pitch', label: 'Pitch' },
@@ -67,7 +67,7 @@ const LENSES: { title: string; question: string; points: string[] }[] = [
     title: 'Feasibility',
     question: 'Can it be built?',
     points: [
-      'The prototype already works: shop, bag, points wallet and admin view, on a rule-based scoring engine.',
+      'The prototype already works as a React and TypeScript web app: shop, bag, points wallet and admin view.',
       'The score combines six factors: CO2, water, energy, lifespan, transport and repairability.',
       'A real launch needs life-cycle data for each product from IKEA.',
       'Points could run through IKEA Family, and second-hand through IKEA Buy Back. All data in the prototype is simulated.',
@@ -141,7 +141,10 @@ function Section({
 function EffectText({ e }: { e: Effect }) {
   return (
     <>
-      <span className={styles.code}>{e.code}</span> {isRisk(e) && <strong>Risk: </strong>}
+      <span className={styles.code}>
+        {e.code} · {e.topic}
+      </span>
+      {isRisk(e) && <strong>Risk: </strong>}
       {e.text}
     </>
   );
@@ -202,6 +205,11 @@ export function SitePage() {
                 but when she shops at IKEA, the cheapest option usually wins.
               </p>
               <p>Today the cheap choice and the sustainable choice are rarely the same.</p>
+              <p>
+                We started by defining the real problem: helping people buy more sustainably without
+                IKEA losing revenue. We compared new and second-hand products, brainstormed many
+                solutions and voted on the best one.
+              </p>
             </div>
           </div>
         </Section>
@@ -287,8 +295,8 @@ export function SitePage() {
           </p>
         </Section>
 
-        {/* 4. Evaluation: usability, feasibility, viability, sustainability */}
-        <Section id="evaluation" title="Does it hold up?">
+        {/* 4. Design thinking: usability, feasibility, viability, sustainability */}
+        <Section id="evaluation" title="Design thinking">
           <p className={styles.intro}>
             We tested the idea against four questions: usability, feasibility, viability and
             sustainability.
@@ -314,10 +322,9 @@ export function SitePage() {
         <Section id="sustainability" title="Sustainability effects" grey>
           <div className={styles.prose}>
             <p>
-              We used the Sustainability Awareness Framework (Duboc et al., 2020) to look at ReWard
-              in five dimensions. Immediate effects come straight from using it. Enabling effects
-              follow when many people use it over time. Structural effects are long-term changes in
-              how people shop and how IKEA works.
+              We used the Sustainability Awareness Framework (Duboc et al., 2020). Immediate effects
+              come from using ReWard, enabling effects from use over time, and structural effects
+              are long-term changes.
             </p>
           </div>
 
@@ -355,9 +362,7 @@ export function SitePage() {
           </table>
 
           <h3 className={`${styles.h3} ${styles.spaced}`}>Chains of effects</h3>
-          <p className={styles.small}>
-            How a feature of ReWard leads to effects across the dimensions.
-          </p>
+          <p className={styles.small}>How one feature leads to effects in other dimensions.</p>
           <div className={styles.chains}>
             {CHAINS.map(({ feature, steps }) => (
               <ol key={feature} role="list" className={styles.chain}>
@@ -379,7 +384,7 @@ export function SitePage() {
                         aria-hidden="true"
                       />
                       <span className={styles.chainMeta}>
-                        {e.code} · {e.dimension} · {e.order}
+                        {e.code} · {e.dimension} · {e.topic}
                       </span>
                       <span>
                         {isRisk(e) && <strong>Risk: </strong>}
@@ -393,9 +398,7 @@ export function SitePage() {
           </div>
 
           <h3 className={`${styles.h3} ${styles.spaced}`}>Likelihood and impact</h3>
-          <p className={styles.small}>
-            Each effect from the table, placed by how likely it is and how large its impact is.
-          </p>
+          <p className={styles.small}>Each effect from the table, by likelihood and impact.</p>
           <table className={styles.matrix}>
             <thead>
               <tr>
@@ -585,6 +588,40 @@ export function SitePage() {
               tomorrow. Requirements Engineering, 25, 469-492.{' '}
               <a href="https://doi.org/10.1007/s00766-020-00336-y" target="_blank" rel="noreferrer">
                 doi.org/10.1007/s00766-020-00336-y
+              </a>
+            </li>
+            <li>
+              Inter IKEA Group (2025). Sustainability Statement FY25.{' '}
+              <a
+                href="https://www.ikea.com/global/en/our-business/reports/sustainability-reporting/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                ikea.com
+              </a>
+            </li>
+            <li>
+              IKEA Sweden. IKEA Family.{' '}
+              <a href="https://www.ikea.com/se/en/ikea-family/" target="_blank" rel="noreferrer">
+                ikea.com/se/en/ikea-family
+              </a>
+            </li>
+            <li>
+              IKEA Sweden. Buyback &amp; Resell.{' '}
+              <a href="https://www.ikea.com/se/en/second-hand/" target="_blank" rel="noreferrer">
+                ikea.com/se/en/second-hand
+              </a>
+            </li>
+            <li>
+              React documentation.{' '}
+              <a href="https://react.dev" target="_blank" rel="noreferrer">
+                react.dev
+              </a>
+            </li>
+            <li>
+              Vite documentation.{' '}
+              <a href="https://vite.dev" target="_blank" rel="noreferrer">
+                vite.dev
               </a>
             </li>
             <li>

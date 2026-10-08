@@ -460,6 +460,7 @@ img.avatar {
 
 /* Sustainability effects */
 .code {
+  display: block;
   font: var(--t-caption-strong);
   color: var(--c-text-2);
 }
