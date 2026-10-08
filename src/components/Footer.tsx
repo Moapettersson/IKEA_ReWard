@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
-import { CONTACT_EMAIL } from '../config';
 import styles from './Footer.module.css';
 
 export const DISCLAIMER =
-  'IKEA ReWard is a student concept created in the TEK830 Capstone course at Chalmers University of Technology. It is not an IKEA service. All product, price and sustainability data is simulated.';
+  'IKEA ReWard is a student concept created in the course TEK830 Sustainable digitalization in practice at Chalmers University of Technology. It is not an IKEA service. All product, price and sustainability data is simulated.';
 
 export function Footer() {
   return (
@@ -13,7 +12,7 @@ export function Footer() {
           <Link to="/">Project website</Link>
           <Link to="/demo">Prototype</Link>
           <Link to="/demo/admin">Admin view</Link>
-          <a href={`mailto:${CONTACT_EMAIL}`}>Contact</a>
+          <Link to="/#contact">Contact</Link>
         </nav>
         <p className={styles.disclaimer}>{DISCLAIMER}</p>
       </div>

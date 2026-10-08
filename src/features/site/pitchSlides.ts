@@ -1,10 +1,10 @@
 import type { Slide } from '../../components/Carousel';
 
 // Exported from the team's Canva deck "First Pitch_Team12". In the website copies, the IKEA logo
-// (slide 4) and the other members' email addresses (slide 1) are covered.
+// on slide 4 is covered.
 export const PITCH_SLIDES: Slide[] = [
   {
-    alt: 'Group 12: Rewarding sustainable choices at IKEA. TEK830 Capstone, IKEA Challenge 1: Sustainable Affordability. Presented by Moa Pettersson, Sofia Nguyen, Isak Treptow, Sara Salam and Max Fägersten.',
+    alt: 'Group 12: Rewarding sustainable choices at IKEA. TEK830 Capstone, IKEA Challenge 1: Sustainable Affordability. Presented by Moa Pettersson (moapett@chalmers.se), Sofia Nguyen (thaop@chalmers.se), Isak Treptow (isaktr@chalmers.se), Sara Salam (sarasala@chalmers.se) and Max Fägersten (maxfa@chalmers.se).',
   },
   { alt: 'Maria, a mother, with her two children.' },
   {

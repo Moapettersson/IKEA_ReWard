@@ -1,23 +1,36 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowDown, ArrowRight } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { Carousel } from '../../components/Carousel';
+import { ScrollManager } from '../../components/DemoLayout';
 import { Footer } from '../../components/Footer';
 import { TierBadge } from '../../components/TierBadge';
 import { Wordmark } from '../../components/Wordmark';
-import { CONTACT_EMAIL, DEMO_VIDEO_EMBED_URL, PITCH_VIDEO_EMBED_URL } from '../../config';
+import { DEMO_VIDEO_EMBED_URL, PITCH_VIDEO_EMBED_URL, TEAM_CONTACTS } from '../../config';
 import { defaultModel, products } from '../../data';
 import { buildCatalogue } from '../../lib/cashback';
 import { formatPct, formatSek } from '../../lib/format';
 import { usePageTitle } from '../../usePageTitle';
 import { PITCH_SLIDES } from './pitchSlides';
+import {
+  CHAINS,
+  DIMENSIONS,
+  EFFECTS,
+  IMPACTS,
+  LIKELIHOODS,
+  ORDERS,
+  effect,
+  isRisk,
+  type Effect,
+} from './sustainability';
 import styles from './SitePage.module.css';
 
 const NAV = [
   { id: 'problem', label: 'Problem' },
   { id: 'solution', label: 'Solution' },
-  { id: 'evaluation', label: 'Evaluation' },
+  { id: 'evaluation', label: 'Design thinking' },
+  { id: 'sustainability', label: 'Sustainability' },
   { id: 'prototype', label: 'Prototype' },
   { id: 'pitch', label: 'Pitch' },
   { id: 'team', label: 'Team' },
@@ -55,7 +68,7 @@ const LENSES: { title: string; question: string; points: string[] }[] = [
     title: 'Feasibility',
     question: 'Can it be built?',
     points: [
-      'The prototype already works: shop, bag, points wallet and admin view, on a rule-based scoring engine.',
+      'The prototype already works as a React and TypeScript web app: shop, bag, points wallet and admin view.',
       'The score combines six factors: CO2, water, energy, lifespan, transport and repairability.',
       'A real launch needs life-cycle data for each product from IKEA.',
       'Points could run through IKEA Family, and second-hand through IKEA Buy Back. All data in the prototype is simulated.',
@@ -83,8 +96,14 @@ const LENSES: { title: string; question: string; points: string[] }[] = [
   },
 ];
 
-// TODO(team): add a photo per person in public/images/site/team/.
-const TEAM = ['Moa Pettersson', 'Sofia Nguyen', 'Isak Treptow', 'Sara Salam', 'Max Fägersten'];
+// TODO(team): add the missing photos to public/images/site/team/. No photo = initials square.
+const TEAM: { name: string; photo?: string }[] = [
+  { name: 'Moa Pettersson', photo: '/images/site/team/moa-pettersson.jpg' },
+  { name: 'Sofia Nguyen', photo: '/images/site/team/sofia-nguyen.jpg' },
+  { name: 'Isak Treptow', photo: '/images/site/team/isak-treptow.jpg' },
+  { name: 'Sara Salam' },
+  { name: 'Max Fägersten' },
+];
 
 function initials(name: string) {
   return name
@@ -120,11 +139,24 @@ function Section({
   );
 }
 
+function EffectText({ e }: { e: Effect }) {
+  return (
+    <>
+      <span className={styles.code}>
+        {e.code} · {e.topic}
+      </span>
+      {isRisk(e) && <strong>Risk: </strong>}
+      {e.text}
+    </>
+  );
+}
+
 export function SitePage() {
   usePageTitle('');
 
   return (
     <>
+      <ScrollManager />
       <a href="#main" className="skip-link">
         Skip to main content
       </a>
@@ -175,6 +207,11 @@ export function SitePage() {
                 but when she shops at IKEA, the cheapest option usually wins.
               </p>
               <p>Today the cheap choice and the sustainable choice are rarely the same.</p>
+              <p>
+                We started by defining the real problem: helping people buy more sustainably without
+                IKEA losing revenue. We compared new and second-hand products, brainstormed many
+                solutions and voted on the best one.
+              </p>
             </div>
           </div>
         </Section>
@@ -260,8 +297,8 @@ export function SitePage() {
           </p>
         </Section>
 
-        {/* 4. Evaluation: usability, feasibility, viability, sustainability */}
-        <Section id="evaluation" title="Does it hold up?">
+        {/* 4. Design thinking: usability, feasibility, viability, sustainability */}
+        <Section id="evaluation" title="Design thinking">
           <p className={styles.intro}>
             We tested the idea against four questions: usability, feasibility, viability and
             sustainability.
@@ -283,8 +320,128 @@ export function SitePage() {
           </div>
         </Section>
 
-        {/* 5. Try the prototype */}
-        <Section id="prototype" title="Try the prototype" grey>
+        {/* 5. Sustainability effects (SusAF): table, chains, likelihood and impact */}
+        <Section id="sustainability" title="Sustainability effects" grey>
+          <div className={styles.prose}>
+            <p>
+              We used the Sustainability Awareness Framework (Duboc et al., 2020). Immediate effects
+              come from using ReWard, enabling effects from use over time, and structural effects
+              are long-term changes.
+            </p>
+          </div>
+
+          <h3 className={`${styles.h3} ${styles.spaced}`}>Effects by dimension</h3>
+          <table className={`${styles.table} ${styles.effectTable}`}>
+            <thead>
+              <tr>
+                <th scope="col">Dimension</th>
+                {ORDERS.map((o) => (
+                  <th key={o} scope="col">
+                    {o}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {DIMENSIONS.map((d) => (
+                <tr key={d}>
+                  <th scope="row">{d}</th>
+                  {ORDERS.map((o) => {
+                    const e = EFFECTS.find((x) => x.dimension === d && x.order === o)!;
+                    return (
+                      <td
+                        key={o}
+                        data-label={o}
+                        className={isRisk(e) ? styles.riskCell : undefined}
+                      >
+                        <EffectText e={e} />
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <h3 className={`${styles.h3} ${styles.spaced}`}>Chains of effects</h3>
+          <p className={styles.small}>How one feature leads to effects in other dimensions.</p>
+          <div className={styles.chains}>
+            {CHAINS.map(({ feature, steps }) => (
+              <ol key={feature} role="list" className={styles.chain}>
+                <li className={styles.chainFeature}>{feature}</li>
+                {steps.map((code) => {
+                  const e = effect(code);
+                  return (
+                    <li key={code} className={isRisk(e) ? styles.chainRisk : styles.chainStep}>
+                      <ArrowRight
+                        className={styles.chainArrowH}
+                        size={24}
+                        strokeWidth={2}
+                        aria-hidden="true"
+                      />
+                      <ArrowDown
+                        className={styles.chainArrowV}
+                        size={24}
+                        strokeWidth={2}
+                        aria-hidden="true"
+                      />
+                      <span className={styles.chainMeta}>
+                        {e.code} · {e.dimension} · {e.topic}
+                      </span>
+                      <span>
+                        {isRisk(e) && <strong>Risk: </strong>}
+                        {e.text}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ol>
+            ))}
+          </div>
+
+          <h3 className={`${styles.h3} ${styles.spaced}`}>Likelihood and impact</h3>
+          <p className={styles.small}>Each effect from the table, by likelihood and impact.</p>
+          <table className={styles.matrix}>
+            <thead>
+              <tr>
+                <td />
+                {LIKELIHOODS.map((l) => (
+                  <th key={l} scope="col">
+                    {l} likelihood
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {IMPACTS.map((impact) => (
+                <tr key={impact}>
+                  <th scope="row">{impact}</th>
+                  {LIKELIHOODS.map((l) => {
+                    const cell = EFFECTS.filter((e) => e.impact === impact && e.likelihood === l);
+                    return (
+                      <td
+                        key={l}
+                        className={impact.endsWith('negative') ? styles.matrixRisk : undefined}
+                      >
+                        <ul role="list" className={styles.matrixCodes}>
+                          {cell.map((e) => (
+                            <li key={e.code} title={e.text}>
+                              {e.code}
+                              <span className="visually-hidden">: {e.text}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Section>
+
+        {/* 6. Try the prototype */}
+        <Section id="prototype" title="Try the prototype">
           <div className={styles.twoCol}>
             <div className={styles.prose}>
               <p>
@@ -354,8 +511,8 @@ export function SitePage() {
           </div>
         </Section>
 
-        {/* 6. Pitch: required by the course. Slides now; the video appears when its URL is set. */}
-        <Section id="pitch" title="Pitch">
+        {/* 7. Pitch: required by the course. Slides now; the video appears when its URL is set. */}
+        <Section id="pitch" title="Pitch" grey>
           <div className={PITCH_VIDEO_EMBED_URL ? styles.twoCol : styles.pitchSingle}>
             {PITCH_VIDEO_EMBED_URL && (
               <div className={styles.video}>
@@ -371,23 +528,42 @@ export function SitePage() {
           </div>
         </Section>
 
-        {/* 7. Team */}
-        <Section id="team" title="Team" grey>
+        {/* 8. Team */}
+        <Section id="team" title="Team">
           <ul role="list" className={styles.team}>
-            {TEAM.map((name) => (
+            {TEAM.map(({ name, photo }) => (
               <li key={name}>
-                <span className={styles.avatar} aria-hidden="true">
-                  {initials(name)}
-                </span>
+                {photo ? (
+                  <img
+                    className={styles.avatar}
+                    src={photo}
+                    alt={`Portrait of ${name}`}
+                    width={480}
+                    height={480}
+                    loading="lazy"
+                  />
+                ) : (
+                  <span className={styles.avatar} aria-hidden="true">
+                    {initials(name)}
+                  </span>
+                )}
                 <h3 className={styles.h3}>{name}</h3>
               </li>
             ))}
           </ul>
-          <p className={styles.small}>Group 12, TEK830 Capstone, Chalmers.</p>
+          <div className={styles.course}>
+            <img
+              src="/images/site/chalmers-logo-white.svg"
+              alt="Chalmers University of Technology"
+              width={162}
+              height={37}
+            />
+            <p>TEK830 Sustainable digitalization in practice · Group 12</p>
+          </div>
         </Section>
 
-        {/* 8. References */}
-        <Section id="references" title="References">
+        {/* 9. References */}
+        <Section id="references" title="References" grey>
           <ol className={styles.references}>
             <li>IKEA (2026). IKEA challenges: proposal for the TEK830 Capstone course.</li>
             <li>
@@ -407,11 +583,58 @@ export function SitePage() {
                 bondbl.com/tlr
               </a>
             </li>
+            <li>
+              Duboc, L., Penzenstadler, B., Porras, J., Akinli Kocak, S., Betz, S., Chitchyan, R.,
+              Leifler, O., Seyff, N. and Venters, C. C. (2020). Requirements engineering for
+              sustainability: an awareness framework for designing software systems for a better
+              tomorrow. Requirements Engineering, 25, 469-492.{' '}
+              <a href="https://doi.org/10.1007/s00766-020-00336-y" target="_blank" rel="noreferrer">
+                doi.org/10.1007/s00766-020-00336-y
+              </a>
+            </li>
+            <li>
+              Inter IKEA Group (2025). Sustainability Statement FY25.{' '}
+              <a
+                href="https://www.ikea.com/global/en/our-business/reports/sustainability-reporting/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                ikea.com
+              </a>
+            </li>
+            <li>
+              IKEA Sweden. IKEA Family.{' '}
+              <a href="https://www.ikea.com/se/en/ikea-family/" target="_blank" rel="noreferrer">
+                ikea.com/se/en/ikea-family
+              </a>
+            </li>
+            <li>
+              IKEA Sweden. Buyback &amp; Resell.{' '}
+              <a href="https://www.ikea.com/se/en/second-hand/" target="_blank" rel="noreferrer">
+                ikea.com/se/en/second-hand
+              </a>
+            </li>
+            <li>
+              React documentation.{' '}
+              <a href="https://react.dev" target="_blank" rel="noreferrer">
+                react.dev
+              </a>
+            </li>
+            <li>
+              Vite documentation.{' '}
+              <a href="https://vite.dev" target="_blank" rel="noreferrer">
+                vite.dev
+              </a>
+            </li>
+            <li>
+              Chalmers University of Technology (2026). TEK830 Sustainable digitalization in
+              practice: Capstone project instructions.
+            </li>
           </ol>
         </Section>
 
-        {/* 9. GenAI */}
-        <Section id="genai" title="Use of generative AI" grey>
+        {/* 10. GenAI */}
+        <Section id="genai" title="Use of generative AI">
           <p className={styles.prose}>
             Claude (Anthropic) helped us a lot with the code, with brainstorming, and with
             correcting our text. The idea and the decisions are ours, and we reviewed everything
@@ -419,11 +642,17 @@ export function SitePage() {
           </p>
         </Section>
 
-        {/* 10. Contact */}
-        <Section id="contact" title="Contact">
+        {/* 11. Contact */}
+        <Section id="contact" title="Contact" grey>
+          <ul role="list" className={styles.contacts}>
+            {TEAM_CONTACTS.map(({ name, email }) => (
+              <li key={email}>
+                {name} · <a href={`mailto:${email}`}>{email}</a>
+              </li>
+            ))}
+          </ul>
           <p className={styles.prose}>
-            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> ·{' '}
-            <Link to="/demo">Prototype</Link>
+            <Link to="/demo">Try the prototype</Link>
           </p>
         </Section>
       </main>
