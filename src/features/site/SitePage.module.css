@@ -440,6 +440,165 @@ img.avatar {
   object-fit: cover;
 }
 
+.course {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-4) var(--s-6);
+  margin-top: var(--s-7);
+  padding: var(--s-5);
+  background: var(--c-black);
+  color: var(--c-text-inverse);
+  font: var(--t-body-l);
+}
+
+.course img {
+  display: block;
+  height: 37px;
+  width: auto;
+}
+
+/* Sustainability effects */
+.code {
+  font: var(--t-caption-strong);
+  color: var(--c-text-2);
+}
+
+.table td.riskCell {
+  border-left: var(--s-1) solid var(--c-red);
+  padding-left: var(--s-3);
+}
+
+.effectTable thead {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.effectTable,
+.effectTable tbody,
+.effectTable tr,
+.effectTable th,
+.effectTable td {
+  display: block;
+}
+
+.effectTable tr {
+  margin-bottom: var(--s-5);
+}
+
+.table.effectTable tbody th {
+  padding-bottom: var(--s-2);
+  border-bottom: 1px solid var(--c-grey-500);
+}
+
+.effectTable td::before {
+  content: attr(data-label);
+  display: block;
+  font: var(--t-caption-strong);
+  color: var(--c-text-2);
+}
+
+.chains {
+  display: grid;
+  gap: var(--s-7);
+  margin-top: var(--s-5);
+}
+
+.chain {
+  display: grid;
+  gap: var(--s-6);
+  font: var(--t-body);
+}
+
+.chain li {
+  position: relative;
+  display: grid;
+  gap: var(--s-1);
+  align-content: start;
+  padding: var(--s-3);
+}
+
+.chainFeature {
+  background: var(--c-black);
+  color: var(--c-text-inverse);
+  font: var(--t-body-strong);
+}
+
+.chainStep,
+.chainRisk {
+  background: var(--c-white);
+  border: 1px solid var(--c-grey-300);
+}
+
+.chainRisk {
+  border-left: var(--s-1) solid var(--c-red);
+}
+
+.chainMeta {
+  font: var(--t-caption-strong);
+  color: var(--c-text-2);
+}
+
+.chainArrowH {
+  display: none;
+}
+
+.chainArrowV {
+  position: absolute;
+  top: calc(-1 * var(--s-6) + var(--s-1));
+  left: var(--s-3);
+}
+
+.matrix {
+  width: 100%;
+  margin-top: var(--s-5);
+  border-collapse: collapse;
+  table-layout: fixed;
+  font: var(--t-caption-strong);
+}
+
+.matrix th {
+  padding: var(--s-2);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.matrix thead td,
+.matrix tbody th {
+  width: 28%;
+}
+
+.matrix td {
+  height: var(--control-l);
+  padding: var(--s-2);
+  vertical-align: top;
+  background: var(--c-white);
+  border: 1px solid var(--c-grey-300);
+}
+
+.matrix thead td {
+  background: none;
+  border: none;
+}
+
+.matrixCodes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-1);
+}
+
+.matrixCodes li {
+  padding: 0 var(--s-1);
+  border: 1px solid var(--c-sustainability);
+}
+
+.matrixRisk .matrixCodes li {
+  border-color: var(--c-red);
+}
+
 .references {
   display: grid;
   gap: var(--s-3);
@@ -493,6 +652,63 @@ img.avatar {
 
   .lenses {
     gap: var(--s-8) var(--s-7);
+  }
+
+  .effectTable thead {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+  }
+
+  .effectTable {
+    display: table;
+  }
+
+  .effectTable thead {
+    display: table-header-group;
+  }
+
+  .effectTable tbody {
+    display: table-row-group;
+  }
+
+  .effectTable tr {
+    display: table-row;
+  }
+
+  .effectTable th,
+  .effectTable td {
+    display: table-cell;
+  }
+
+  .table.effectTable tbody th {
+    border-bottom: 1px solid var(--c-grey-200);
+  }
+
+  .effectTable td::before {
+    content: none;
+  }
+
+  .effectTable td {
+    width: 28%;
+  }
+
+  .chain {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .chainArrowH {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: calc(-1 * var(--s-6) + var(--s-1));
+    transform: translateY(-50%);
+  }
+
+  .chainArrowV {
+    display: none;
   }
 
   .team {

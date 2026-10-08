@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowDown, ArrowRight } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../../components/Button';
@@ -12,12 +12,24 @@ import { buildCatalogue } from '../../lib/cashback';
 import { formatPct, formatSek } from '../../lib/format';
 import { usePageTitle } from '../../usePageTitle';
 import { PITCH_SLIDES } from './pitchSlides';
+import {
+  CHAINS,
+  DIMENSIONS,
+  EFFECTS,
+  IMPACTS,
+  LIKELIHOODS,
+  ORDERS,
+  effect,
+  isRisk,
+  type Effect,
+} from './sustainability';
 import styles from './SitePage.module.css';
 
 const NAV = [
   { id: 'problem', label: 'Problem' },
   { id: 'solution', label: 'Solution' },
   { id: 'evaluation', label: 'Evaluation' },
+  { id: 'sustainability', label: 'Sustainability' },
   { id: 'prototype', label: 'Prototype' },
   { id: 'pitch', label: 'Pitch' },
   { id: 'team', label: 'Team' },
@@ -123,6 +135,15 @@ function Section({
         {children}
       </div>
     </section>
+  );
+}
+
+function EffectText({ e }: { e: Effect }) {
+  return (
+    <>
+      <span className={styles.code}>{e.code}</span> {isRisk(e) && <strong>Risk: </strong>}
+      {e.text}
+    </>
   );
 }
 
@@ -289,8 +310,133 @@ export function SitePage() {
           </div>
         </Section>
 
-        {/* 5. Try the prototype */}
-        <Section id="prototype" title="Try the prototype" grey>
+        {/* 5. Sustainability effects (SusAF): table, chains, likelihood and impact */}
+        <Section id="sustainability" title="Sustainability effects" grey>
+          <div className={styles.prose}>
+            <p>
+              We used the Sustainability Awareness Framework (Duboc et al., 2020) to look at ReWard
+              in five dimensions. Immediate effects come straight from using it. Enabling effects
+              follow when many people use it over time. Structural effects are long-term changes in
+              how people shop and how IKEA works.
+            </p>
+          </div>
+
+          <h3 className={`${styles.h3} ${styles.spaced}`}>Effects by dimension</h3>
+          <table className={`${styles.table} ${styles.effectTable}`}>
+            <thead>
+              <tr>
+                <th scope="col">Dimension</th>
+                {ORDERS.map((o) => (
+                  <th key={o} scope="col">
+                    {o}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {DIMENSIONS.map((d) => (
+                <tr key={d}>
+                  <th scope="row">{d}</th>
+                  {ORDERS.map((o) => {
+                    const e = EFFECTS.find((x) => x.dimension === d && x.order === o)!;
+                    return (
+                      <td
+                        key={o}
+                        data-label={o}
+                        className={isRisk(e) ? styles.riskCell : undefined}
+                      >
+                        <EffectText e={e} />
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <h3 className={`${styles.h3} ${styles.spaced}`}>Chains of effects</h3>
+          <p className={styles.small}>
+            How a feature of ReWard leads to effects across the dimensions.
+          </p>
+          <div className={styles.chains}>
+            {CHAINS.map(({ feature, steps }) => (
+              <ol key={feature} role="list" className={styles.chain}>
+                <li className={styles.chainFeature}>{feature}</li>
+                {steps.map((code) => {
+                  const e = effect(code);
+                  return (
+                    <li key={code} className={isRisk(e) ? styles.chainRisk : styles.chainStep}>
+                      <ArrowRight
+                        className={styles.chainArrowH}
+                        size={24}
+                        strokeWidth={2}
+                        aria-hidden="true"
+                      />
+                      <ArrowDown
+                        className={styles.chainArrowV}
+                        size={24}
+                        strokeWidth={2}
+                        aria-hidden="true"
+                      />
+                      <span className={styles.chainMeta}>
+                        {e.code} · {e.dimension} · {e.order}
+                      </span>
+                      <span>
+                        {isRisk(e) && <strong>Risk: </strong>}
+                        {e.text}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ol>
+            ))}
+          </div>
+
+          <h3 className={`${styles.h3} ${styles.spaced}`}>Likelihood and impact</h3>
+          <p className={styles.small}>
+            Each effect from the table, placed by how likely it is and how large its impact is.
+          </p>
+          <table className={styles.matrix}>
+            <thead>
+              <tr>
+                <td />
+                {LIKELIHOODS.map((l) => (
+                  <th key={l} scope="col">
+                    {l} likelihood
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {IMPACTS.map((impact) => (
+                <tr key={impact}>
+                  <th scope="row">{impact}</th>
+                  {LIKELIHOODS.map((l) => {
+                    const cell = EFFECTS.filter((e) => e.impact === impact && e.likelihood === l);
+                    return (
+                      <td
+                        key={l}
+                        className={impact.endsWith('negative') ? styles.matrixRisk : undefined}
+                      >
+                        <ul role="list" className={styles.matrixCodes}>
+                          {cell.map((e) => (
+                            <li key={e.code} title={e.text}>
+                              {e.code}
+                              <span className="visually-hidden">: {e.text}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Section>
+
+        {/* 6. Try the prototype */}
+        <Section id="prototype" title="Try the prototype">
           <div className={styles.twoCol}>
             <div className={styles.prose}>
               <p>
@@ -360,8 +506,8 @@ export function SitePage() {
           </div>
         </Section>
 
-        {/* 6. Pitch: required by the course. Slides now; the video appears when its URL is set. */}
-        <Section id="pitch" title="Pitch">
+        {/* 7. Pitch: required by the course. Slides now; the video appears when its URL is set. */}
+        <Section id="pitch" title="Pitch" grey>
           <div className={PITCH_VIDEO_EMBED_URL ? styles.twoCol : styles.pitchSingle}>
             {PITCH_VIDEO_EMBED_URL && (
               <div className={styles.video}>
@@ -377,8 +523,8 @@ export function SitePage() {
           </div>
         </Section>
 
-        {/* 7. Team */}
-        <Section id="team" title="Team" grey>
+        {/* 8. Team */}
+        <Section id="team" title="Team">
           <ul role="list" className={styles.team}>
             {TEAM.map(({ name, photo }) => (
               <li key={name}>
@@ -400,11 +546,20 @@ export function SitePage() {
               </li>
             ))}
           </ul>
-          <p className={styles.small}>Group 12, TEK830 Capstone, Chalmers.</p>
+          <div className={styles.course}>
+            <img
+              src="/images/site/chalmers-logo-white.svg"
+              alt="Chalmers University of Technology"
+              width={162}
+              height={37}
+            />
+            {/* TODO(team): replace with the exact course title. */}
+            <p>Group 12 · TEK830 Capstone</p>
+          </div>
         </Section>
 
-        {/* 8. References */}
-        <Section id="references" title="References">
+        {/* 9. References */}
+        <Section id="references" title="References" grey>
           <ol className={styles.references}>
             <li>IKEA (2026). IKEA challenges: proposal for the TEK830 Capstone course.</li>
             <li>
@@ -424,11 +579,21 @@ export function SitePage() {
                 bondbl.com/tlr
               </a>
             </li>
+            <li>
+              Duboc, L., Penzenstadler, B., Porras, J., Akinli Kocak, S., Betz, S., Chitchyan, R.,
+              Leifler, O., Seyff, N. and Venters, C. C. (2020). Requirements engineering for
+              sustainability: an awareness framework for designing software systems for a better
+              tomorrow. Requirements Engineering, 25, 469-492.{' '}
+              <a href="https://doi.org/10.1007/s00766-020-00336-y" target="_blank" rel="noreferrer">
+                doi.org/10.1007/s00766-020-00336-y
+              </a>
+            </li>
+            <li>Chalmers University of Technology (2026). TEK830 Capstone project instructions.</li>
           </ol>
         </Section>
 
-        {/* 9. GenAI */}
-        <Section id="genai" title="Use of generative AI" grey>
+        {/* 10. GenAI */}
+        <Section id="genai" title="Use of generative AI">
           <p className={styles.prose}>
             Claude (Anthropic) helped us a lot with the code, with brainstorming, and with
             correcting our text. The idea and the decisions are ours, and we reviewed everything
@@ -436,8 +601,8 @@ export function SitePage() {
           </p>
         </Section>
 
-        {/* 10. Contact */}
-        <Section id="contact" title="Contact">
+        {/* 11. Contact */}
+        <Section id="contact" title="Contact" grey>
           <p className={styles.prose}>
             <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> ·{' '}
             <Link to="/demo">Prototype</Link>
