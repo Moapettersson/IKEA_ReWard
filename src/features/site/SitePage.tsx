@@ -1,7 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { Accordion } from '../../components/Accordion';
 import { Button } from '../../components/Button';
 import { Carousel } from '../../components/Carousel';
 import { Footer } from '../../components/Footer';
@@ -18,6 +17,7 @@ import styles from './SitePage.module.css';
 const NAV = [
   { id: 'problem', label: 'Problem' },
   { id: 'solution', label: 'Solution' },
+  { id: 'evaluation', label: 'Evaluation' },
   { id: 'prototype', label: 'Prototype' },
   { id: 'pitch', label: 'Pitch' },
   { id: 'team', label: 'Team' },
@@ -35,6 +35,52 @@ const [cheap, durable, secondhand] = example as [
   (typeof example)[number],
   (typeof example)[number],
   (typeof example)[number],
+];
+
+const topTier = defaultModel.tiers[0]!;
+
+// The four questions the concept is evaluated against. Numbers come from the default model.
+const LENSES: { title: string; question: string; points: string[] }[] = [
+  {
+    title: 'Usability',
+    question: 'Will people use it?',
+    points: [
+      'Maria shops on a tight budget. Johan buys once and keeps things for years.',
+      'At IKEA, a commercial manager sets the cashback model in the admin view.',
+      'Today the cheap choice and the sustainable choice are rarely the same.',
+      'ReWard shows tier, points and price after cashback next to every price, right when you choose.',
+    ],
+  },
+  {
+    title: 'Feasibility',
+    question: 'Can it be built?',
+    points: [
+      'The prototype already works: shop, bag, points wallet and admin view, on a rule-based scoring engine.',
+      'The score combines six factors: CO2, water, energy, lifespan, transport and repairability.',
+      'A real launch needs life-cycle data for each product from IKEA.',
+      'Points could run through IKEA Family, and second-hand through IKEA Buy Back. All data in the prototype is simulated.',
+    ],
+  },
+  {
+    title: 'Viability',
+    question: 'Does it work for IKEA?',
+    points: [
+      "It supports IKEA's circular ambitions and its idea of a better everyday life for the many.",
+      `Cashback never takes more than ${formatPct(defaultModel.maxShareOfMargin * 100)} of a product's margin, so nothing is sold at a loss.`,
+      'Points can only be spent at IKEA, so the cashback comes back as sales.',
+      'Members of loyalty programmes spend more than non-members (Accenture, 2016).',
+    ],
+  },
+  {
+    title: 'Sustainability',
+    question: 'Is it good for people and planet?',
+    points: [
+      'Climate and resource impact is divided by lifespan, so products that last score higher. Each product shows how much CO2e it saves per year.',
+      `Households like Maria's can afford the sustainable choice, with up to ${formatPct(topTier.pct)} back.`,
+      'The margin cap keeps the model profitable, so it can keep running.',
+      `Cashback could make people buy more. That's why second-hand gets ${formatPct(defaultModel.secondhandBonusPct)} extra and is always the most rewarded.`,
+    ],
+  },
 ];
 
 // TODO(team): add a photo per person in public/images/site/team/.
@@ -212,25 +258,33 @@ export function SitePage() {
             {formatSek(durable.r.priceAfterCashback - cheap.r.priceAfterCashback)}, and second-hand
             is cheapest.
           </p>
-
-          <ul role="list" className={styles.impact}>
-            <li>
-              <strong>Less climate impact.</strong> Products that last longer and emit less per year
-              score higher.
-            </li>
-            <li>
-              <strong>Reuse first.</strong> Second-hand always gives the most back, so the reward
-              doesn't push new production.
-            </li>
-            <li>
-              <strong>Still profitable.</strong> A cap based on each product's margin keeps IKEA
-              from losing money.
-            </li>
-          </ul>
         </Section>
 
-        {/* 4. Try the prototype */}
-        <Section id="prototype" title="Try the prototype">
+        {/* 4. Evaluation: usability, feasibility, viability, sustainability */}
+        <Section id="evaluation" title="Does it hold up?">
+          <p className={styles.intro}>
+            We tested the idea against four questions: usability, feasibility, viability and
+            sustainability.
+          </p>
+          <div className={styles.lenses}>
+            {LENSES.map(({ title, question, points }) => (
+              <article key={title} className={styles.lens}>
+                <div>
+                  <h3 className={styles.h3}>{title}</h3>
+                  <p className={styles.lensQuestion}>{question}</p>
+                </div>
+                <ul role="list" className={styles.lensPoints}>
+                  {points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </Section>
+
+        {/* 5. Try the prototype */}
+        <Section id="prototype" title="Try the prototype" grey>
           <div className={styles.twoCol}>
             <div className={styles.prose}>
               <p>
@@ -297,88 +351,6 @@ export function SitePage() {
               <h3 className={styles.h3}>For IKEA</h3>
               <p>Set weights, tiers and caps, and see the cost before you save.</p>
             </article>
-          </div>
-        </Section>
-
-        {/* 5. More about the project: details for those who want them, closed by default */}
-        <Section id="more" title="More about the project" grey>
-          <div className={styles.more}>
-            <Accordion title="Sustainability impact">
-              <div className={styles.prose}>
-                <p>
-                  <strong>Individual:</strong> people on a tight budget get the freedom to choose
-                  the sustainable option. The score is shown openly, so the choice stays theirs.
-                </p>
-                <p>
-                  <strong>Social:</strong> everyone can use it. The incentive is strongest for
-                  households with the least room to choose today.
-                </p>
-                <p>
-                  <strong>Economic:</strong> rewards bring customers back. Loyalty members bring
-                  12-18 % more revenue growth per year [2]. Points are spent at IKEA, and a margin
-                  cap protects profit.
-                </p>
-                <p>
-                  <strong>Technical:</strong> IKEA updates the model in an admin view. It is built
-                  to sit on top of existing systems like IKEA Family, not as a new app.
-                </p>
-                <p>
-                  <strong>Environmental:</strong> the system itself needs little server capacity.
-                  Its real effect is on behaviour: towards lower impact per year of use, and towards
-                  second-hand.
-                </p>
-                <p>
-                  <strong>The risk:</strong> points can make people buy more in general. That's why
-                  the reward grows with sustainability, not with the amount, and why second-hand
-                  always gives the most back.
-                </p>
-              </div>
-            </Accordion>
-            <Accordion title="Real vs simulated">
-              <div className={styles.tableWrap}>
-                <table className={styles.table}>
-                  <thead>
-                    <tr>
-                      <th scope="col">Part</th>
-                      <th scope="col">In the prototype</th>
-                      <th scope="col">A real version needs</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">Calculation</th>
-                      <td>Working and tested</td>
-                      <td>The same logic in IKEA's systems</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Products and prices</th>
-                      <td>24 invented products</td>
-                      <td>The IKEA range</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Sustainability data</th>
-                      <td>Simulated</td>
-                      <td>IKEA's life cycle (LCA) data</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Scoring</th>
-                      <td>Compared within each product group</td>
-                      <td>Fixed benchmarks per category</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Margins</th>
-                      <td>Simulated</td>
-                      <td>IKEA's margin data</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Points</th>
-                      <td>Saved in your browser</td>
-                      <td>IKEA Family</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </Accordion>
           </div>
         </Section>
 

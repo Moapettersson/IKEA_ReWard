@@ -172,16 +172,16 @@ Single long page with anchor navigation, sections in this order. Copy in English
 
 1. **Hero:** centred. Product name, one-line value proposition, one large blue "Try the prototype" button → `/demo`, and a small "Watch the pitch" text link → #pitch (one button only, to avoid the "centred hero with two buttons" anti-pattern).
 2. **The problem:** the challenge question and Maria's situation in two sentences.
-3. **Our solution:** 3 steps (score → cashback → points), the worked example table, and three short sustainability points (less climate impact, reuse first, still profitable). Below 600px the steps are a compact list and the table becomes one small card per product.
-4. **Try the prototype:** two sentences + "simulated data" note, screenshot, links to `/demo` and `/demo/admin`, and two feature screenshots (customer and IKEA) with one line each.
-5. **More about the project:** closed-by-default rows (the Accordion component): "Sustainability impact" (the five dimensions + the overconsumption risk) and "Real vs simulated" (table). Details for those who want them, without making the page long.
+3. **Our solution:** 3 steps (score → cashback → points) and the worked example table. Below 600px the steps are a compact list and the table becomes one small card per product.
+4. **Does it hold up?** (`id="evaluation"`, nav label "Evaluation"): one intro sentence and four cards in a 2×2 grid from 900px, one column below: Usability (Will people use it?), Feasibility (Can it be built?), Viability (Does it work for IKEA?) and Sustainability (Is it good for people and planet?). Each card has a title, a question as subtitle and 3-4 short points written as plain sentences. No icons and no bold labels, so it does not copy the usual feature-grid look. Sustainability covers environmental, social and economic impact plus the overconsumption risk and how the second-hand bonus answers it. Percentages come from the default model. Added 2026-10-07 after course feedback that sustainability was too thin; it replaces the three sustainability points that used to sit under "Our solution".
+5. **Try the prototype:** two sentences + "simulated data" note, screenshot, links to `/demo` and `/demo/admin`, and two feature screenshots (customer and IKEA) with one line each.
 6. **Pitch:** the pitch slides as local images in our own `Carousel` component (buttons, swipe, arrow keys, "3 / 14"), no Canva link. The video appears next to it when `PITCH_VIDEO_EMBED_URL` is set in `src/config.ts`; until then there is no video placeholder. Required by the course. `id="pitch"`.
 7. **Team:** 5 members (Moa Pettersson, Sofia Nguyen, Isak Treptow, Sara Salam, Max Fägersten): photo and name only. Missing photos show a grey square with initials.
 8. **References:** numbered list of sources.
 9. **Use of generative AI:** one short paragraph: Claude helped with code, brainstorming and correcting text; the team reviewed everything. Required by the course.
 10. **Contact:** moapett@chalmers.se + footer disclaimer.
 
-Removed on 2026-10-01 to keep the focus: separate Features, Process and Next steps sections. On 2026-10-08 Sustainability impact and Real vs simulated came back as collapsible rows (team feedback: restructure rather than remove).
+Removed on 2026-10-01 to keep the focus: separate Features, Sustainability impact, Real vs simulated, Process and Next steps sections. Sustainability now lives in "Does it hold up?", and "simulated" is stated in the prototype section, the demo utility bar and the footer.
 
 **Pitch slides:** exported from the Canva deck "First Pitch_Team12" to `public/images/pitch/slide-01.jpg` … `slide-14.jpg` (1280×720, under 150 kB each). In the website copies the IKEA logo on slide 4 is covered (branding rule) and the other members' emails on slide 1 are removed (only moapett@chalmers.se is published). Alt text per slide lives in `src/features/site/pitchSlides.ts`. Re-export and redo both edits if the deck changes.
 
