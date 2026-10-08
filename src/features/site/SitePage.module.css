@@ -18,6 +18,11 @@
   gap: var(--s-5);
   overflow-x: auto;
   flex: 1;
+  scrollbar-width: none;
+}
+
+.nav::-webkit-scrollbar {
+  display: none;
 }
 
 .nav a {
@@ -31,7 +36,6 @@
 .nav a:hover {
   text-decoration: underline;
 }
-
 
 .hero {
   padding: var(--s-9) 0;
@@ -82,7 +86,6 @@
   max-width: 30ch;
 }
 
-
 .section {
   padding: var(--s-9) 0;
   scroll-margin-top: 64px;
@@ -114,7 +117,6 @@
   margin: var(--s-8) 0 var(--s-4);
 }
 
-
 .twoCol {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -138,7 +140,6 @@
   color: var(--c-text-1);
 }
 
-
 .steps {
   display: grid;
   gap: var(--s-4);
@@ -148,12 +149,15 @@
 
 .step {
   display: grid;
-  gap: var(--s-2);
+  grid-template-columns: var(--control-s) minmax(0, 1fr);
+  column-gap: var(--s-4);
+  row-gap: var(--s-1);
   align-content: start;
-  padding: var(--s-5);
-  background: var(--c-white);
-  border-radius: var(--r-none);
-  font: var(--t-body);
+  font: var(--t-body-l);
+}
+
+.step .stepNumber {
+  grid-row: span 2;
 }
 
 .stepNumber {
@@ -168,10 +172,9 @@
 }
 
 .stepArrow {
-  display: flex;
+  display: none;
   justify-content: center;
   color: var(--c-text-3);
-  transform: rotate(90deg);
 }
 
 .tableWrap {
@@ -220,7 +223,6 @@
   padding-left: var(--s-3);
 }
 
-
 .after {
   margin-top: var(--s-5);
   font: var(--t-body-l);
@@ -263,6 +265,87 @@
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+.more {
+  max-width: 800px;
+}
+
+.pitchSingle {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* The bookcase table becomes one small card per product on phones. */
+@media (max-width: 599px) {
+  .cardTable thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .cardTable,
+  .cardTable tbody,
+  .cardTable tr,
+  .cardTable th,
+  .cardTable td {
+    display: block;
+  }
+
+  .cardTable tbody {
+    display: grid;
+    gap: var(--s-3);
+  }
+
+  .cardTable tr {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--s-3) var(--s-2);
+    padding: var(--s-4);
+    background: var(--c-white);
+  }
+
+  .table.cardTable tbody th {
+    grid-column: 1 / 3;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    font: var(--t-h3);
+  }
+
+  .table.cardTable td {
+    padding: 0;
+    border: 0;
+    text-align: left;
+  }
+
+  .table.cardTable tbody th,
+  .table.cardTable td[data-label='Tier'] {
+    grid-row: 1;
+  }
+
+  .table.cardTable td[data-label='Tier'] {
+    grid-column: 3;
+    justify-self: end;
+  }
+
+  .table.cardTable td:not([data-label='Tier']) {
+    grid-row: 2;
+  }
+
+  .cardTable td:not([data-label='Tier'])::before {
+    content: attr(data-label);
+    display: block;
+    font: var(--t-caption);
+    color: var(--c-text-3);
+  }
+
+  .table.cardTable .best {
+    margin: calc(-1 * var(--s-1)) calc(-1 * var(--s-2));
+    padding: var(--s-1) var(--s-2);
+  }
 }
 
 .placeholder {
@@ -318,17 +401,6 @@
   margin-bottom: var(--s-2);
 }
 
-
-
-
-
-
-
-
-
-
-
-
 .team {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -369,7 +441,6 @@
 }
 
 @media (min-width: 900px) {
-
   .hero {
     padding: var(--s-10) 0;
   }
@@ -385,10 +456,19 @@
 
   .step {
     align-self: stretch;
+    grid-template-columns: 1fr;
+    row-gap: var(--s-2);
+    padding: var(--s-5);
+    background: var(--c-white);
+    font: var(--t-body);
+  }
+
+  .step .stepNumber {
+    grid-row: auto;
   }
 
   .stepArrow {
-    transform: none;
+    display: flex;
   }
 
   .features,
@@ -400,9 +480,6 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--s-6);
   }
-
-
-
 
   .team {
     grid-template-columns: repeat(5, minmax(0, 1fr));

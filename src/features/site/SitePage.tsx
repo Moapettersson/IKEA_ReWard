@@ -1,21 +1,18 @@
 import { ArrowRight } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
+import { Accordion } from '../../components/Accordion';
 import { Button } from '../../components/Button';
+import { Carousel } from '../../components/Carousel';
 import { Footer } from '../../components/Footer';
 import { TierBadge } from '../../components/TierBadge';
 import { Wordmark } from '../../components/Wordmark';
-import {
-  CONTACT_EMAIL,
-  DEMO_VIDEO_EMBED_URL,
-  PITCH_VIDEO_EMBED_URL,
-  SLIDES_EMBED_URL,
-  SLIDES_VIEW_URL,
-} from '../../config';
+import { CONTACT_EMAIL, DEMO_VIDEO_EMBED_URL, PITCH_VIDEO_EMBED_URL } from '../../config';
 import { defaultModel, products } from '../../data';
 import { buildCatalogue } from '../../lib/cashback';
 import { formatPct, formatSek } from '../../lib/format';
 import { usePageTitle } from '../../usePageTitle';
+import { PITCH_SLIDES } from './pitchSlides';
 import styles from './SitePage.module.css';
 
 const NAV = [
@@ -28,10 +25,12 @@ const NAV = [
 
 // Numbers on the site come from the engine with the default model, like the worked example.
 const defaults = buildCatalogue(products, defaultModel, {});
-const example = ['langsam-bookcase-80', 'stadig-bookcase-80', 'stadig-bookcase-80-sh'].map((id) => ({
-  p: defaults.products.get(id)!,
-  r: defaults.results.get(id)!,
-}));
+const example = ['langsam-bookcase-80', 'stadig-bookcase-80', 'stadig-bookcase-80-sh'].map(
+  (id) => ({
+    p: defaults.products.get(id)!,
+    r: defaults.results.get(id)!,
+  }),
+);
 const [cheap, durable, secondhand] = example as [
   (typeof example)[number],
   (typeof example)[number],
@@ -165,7 +164,7 @@ export function SitePage() {
 
           <h3 className={`${styles.h3} ${styles.spaced}`}>Example: a bookcase</h3>
           <div className={styles.tableWrap}>
-            <table className={styles.table}>
+            <table className={`${styles.table} ${styles.cardTable}`}>
               <thead>
                 <tr>
                   <th scope="col">Product</th>
@@ -188,12 +187,17 @@ export function SitePage() {
                       {p.name}
                       {p.condition === 'secondhand' ? ' (second-hand)' : ''}
                     </th>
-                    <td className={styles.num}>{formatSek(p.priceSek)}</td>
-                    <td>
+                    <td className={styles.num} data-label="Price">
+                      {formatSek(p.priceSek)}
+                    </td>
+                    <td data-label="Tier">
                       <TierBadge tier={r.tier} showLabel />
                     </td>
-                    <td className={styles.num}>{r.points}</td>
+                    <td className={styles.num} data-label="Points">
+                      {r.points}
+                    </td>
                     <td
+                      data-label="After cashback"
                       className={`${styles.num} ${styles.strong} ${p.id === secondhand.p.id ? styles.best : ''}`}
                     >
                       {formatSek(r.priceAfterCashback)}
@@ -236,7 +240,9 @@ export function SitePage() {
                 In the admin view you can change the model the way IKEA would, and see the points
                 change.
               </p>
-              <p className={styles.small}>Products, prices and sustainability data are simulated.</p>
+              <p className={styles.small}>
+                Products, prices and sustainability data are simulated.
+              </p>
               <div className={styles.row}>
                 <Button to="/demo" variant="primary">
                   Open the prototype
@@ -294,38 +300,107 @@ export function SitePage() {
           </div>
         </Section>
 
-        {/* 5. Pitch: required by the course, kept minimal */}
-        <Section id="pitch" title="Pitch" grey>
-          <div className={styles.twoCol}>
-            <figure className={styles.figure}>
-              {PITCH_VIDEO_EMBED_URL ? (
-                <div className={styles.video}>
-                  <iframe
-                    src={PITCH_VIDEO_EMBED_URL}
-                    title="Pitch video"
-                    loading="lazy"
-                    allow="fullscreen"
-                  />
-                </div>
-              ) : (
-                <div className={styles.placeholder}>Pitch video coming soon</div>
-              )}
-            </figure>
-            <figure className={styles.figure}>
-              <div className={styles.video}>
-                <iframe src={SLIDES_EMBED_URL} title="Pitch slides" loading="lazy" allow="fullscreen" />
+        {/* 5. More about the project: details for those who want them, closed by default */}
+        <Section id="more" title="More about the project" grey>
+          <div className={styles.more}>
+            <Accordion title="Sustainability impact">
+              <div className={styles.prose}>
+                <p>
+                  <strong>Individual:</strong> people on a tight budget get the freedom to choose
+                  the sustainable option. The score is shown openly, so the choice stays theirs.
+                </p>
+                <p>
+                  <strong>Social:</strong> everyone can use it. The incentive is strongest for
+                  households with the least room to choose today.
+                </p>
+                <p>
+                  <strong>Economic:</strong> rewards bring customers back. Loyalty members bring
+                  12-18 % more revenue growth per year [2]. Points are spent at IKEA, and a margin
+                  cap protects profit.
+                </p>
+                <p>
+                  <strong>Technical:</strong> IKEA updates the model in an admin view. It is built
+                  to sit on top of existing systems like IKEA Family, not as a new app.
+                </p>
+                <p>
+                  <strong>Environmental:</strong> the system itself needs little server capacity.
+                  Its real effect is on behaviour: towards lower impact per year of use, and towards
+                  second-hand.
+                </p>
+                <p>
+                  <strong>The risk:</strong> points can make people buy more in general. That's why
+                  the reward grows with sustainability, not with the amount, and why second-hand
+                  always gives the most back.
+                </p>
               </div>
-              <figcaption>
-                <a href={SLIDES_VIEW_URL} target="_blank" rel="noreferrer">
-                  Open the slides in Canva
-                </a>
-              </figcaption>
-            </figure>
+            </Accordion>
+            <Accordion title="Real vs simulated">
+              <div className={styles.tableWrap}>
+                <table className={styles.table}>
+                  <thead>
+                    <tr>
+                      <th scope="col">Part</th>
+                      <th scope="col">In the prototype</th>
+                      <th scope="col">A real version needs</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Calculation</th>
+                      <td>Working and tested</td>
+                      <td>The same logic in IKEA's systems</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Products and prices</th>
+                      <td>24 invented products</td>
+                      <td>The IKEA range</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Sustainability data</th>
+                      <td>Simulated</td>
+                      <td>IKEA's life cycle (LCA) data</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Scoring</th>
+                      <td>Compared within each product group</td>
+                      <td>Fixed benchmarks per category</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Margins</th>
+                      <td>Simulated</td>
+                      <td>IKEA's margin data</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Points</th>
+                      <td>Saved in your browser</td>
+                      <td>IKEA Family</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </Accordion>
           </div>
         </Section>
 
-        {/* 6. Team */}
-        <Section id="team" title="Team">
+        {/* 6. Pitch: required by the course. Slides now; the video appears when its URL is set. */}
+        <Section id="pitch" title="Pitch">
+          <div className={PITCH_VIDEO_EMBED_URL ? styles.twoCol : styles.pitchSingle}>
+            {PITCH_VIDEO_EMBED_URL && (
+              <div className={styles.video}>
+                <iframe
+                  src={PITCH_VIDEO_EMBED_URL}
+                  title="Pitch video"
+                  loading="lazy"
+                  allow="fullscreen"
+                />
+              </div>
+            )}
+            <Carousel label="Pitch slides" slides={PITCH_SLIDES} width={1280} height={720} />
+          </div>
+        </Section>
+
+        {/* 7. Team */}
+        <Section id="team" title="Team" grey>
           <ul role="list" className={styles.team}>
             {TEAM.map((name) => (
               <li key={name}>
@@ -339,8 +414,8 @@ export function SitePage() {
           <p className={styles.small}>Group 12, TEK830 Capstone, Chalmers.</p>
         </Section>
 
-        {/* 7. References */}
-        <Section id="references" title="References" grey>
+        {/* 8. References */}
+        <Section id="references" title="References">
           <ol className={styles.references}>
             <li>IKEA (2026). IKEA challenges: proposal for the TEK830 Capstone course.</li>
             <li>
@@ -363,8 +438,8 @@ export function SitePage() {
           </ol>
         </Section>
 
-        {/* 8. GenAI */}
-        <Section id="genai" title="Use of generative AI">
+        {/* 9. GenAI */}
+        <Section id="genai" title="Use of generative AI" grey>
           <p className={styles.prose}>
             Claude (Anthropic) helped us a lot with the code, with brainstorming, and with
             correcting our text. The idea and the decisions are ours, and we reviewed everything
@@ -372,8 +447,8 @@ export function SitePage() {
           </p>
         </Section>
 
-        {/* 9. Contact */}
-        <Section id="contact" title="Contact" grey>
+        {/* 10. Contact */}
+        <Section id="contact" title="Contact">
           <p className={styles.prose}>
             <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> ·{' '}
             <Link to="/demo">Prototype</Link>

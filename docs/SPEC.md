@@ -172,15 +172,18 @@ Single long page with anchor navigation, sections in this order. Copy in English
 
 1. **Hero:** centred. Product name, one-line value proposition, one large blue "Try the prototype" button → `/demo`, and a small "Watch the pitch" text link → #pitch (one button only, to avoid the "centred hero with two buttons" anti-pattern).
 2. **The problem:** the challenge question and Maria's situation in two sentences.
-3. **Our solution:** 3 steps (score → cashback → points), the worked example table, and three short sustainability points (less climate impact, reuse first, still profitable).
+3. **Our solution:** 3 steps (score → cashback → points), the worked example table, and three short sustainability points (less climate impact, reuse first, still profitable). Below 600px the steps are a compact list and the table becomes one small card per product.
 4. **Try the prototype:** two sentences + "simulated data" note, screenshot, links to `/demo` and `/demo/admin`, and two feature screenshots (customer and IKEA) with one line each.
-5. **Pitch:** slides (Canva embed) and pitch video only, no text. Required by the course. `id="pitch"`.
-6. **Team:** 5 members (Moa Pettersson, Sofia Nguyen, Isak Treptow, Sara Salam, Max Fägersten): photo and name only. Missing photos show a grey square with initials.
-7. **References:** numbered list of sources.
-8. **Use of generative AI:** one short paragraph: Claude helped with code, brainstorming and correcting text; the team reviewed everything. Required by the course.
-9. **Contact:** moapett@chalmers.se + footer disclaimer.
+5. **More about the project:** closed-by-default rows (the Accordion component): "Sustainability impact" (the five dimensions + the overconsumption risk) and "Real vs simulated" (table). Details for those who want them, without making the page long.
+6. **Pitch:** the pitch slides as local images in our own `Carousel` component (buttons, swipe, arrow keys, "3 / 14"), no Canva link. The video appears next to it when `PITCH_VIDEO_EMBED_URL` is set in `src/config.ts`; until then there is no video placeholder. Required by the course. `id="pitch"`.
+7. **Team:** 5 members (Moa Pettersson, Sofia Nguyen, Isak Treptow, Sara Salam, Max Fägersten): photo and name only. Missing photos show a grey square with initials.
+8. **References:** numbered list of sources.
+9. **Use of generative AI:** one short paragraph: Claude helped with code, brainstorming and correcting text; the team reviewed everything. Required by the course.
+10. **Contact:** moapett@chalmers.se + footer disclaimer.
 
-Removed on 2026-10-01 to keep the focus: separate Features, Sustainability impact, Real vs simulated, Process and Next steps sections. Sustainability now lives in "Our solution", and "simulated" is stated in the prototype section, the demo utility bar and the footer.
+Removed on 2026-10-01 to keep the focus: separate Features, Process and Next steps sections. On 2026-10-08 Sustainability impact and Real vs simulated came back as collapsible rows (team feedback: restructure rather than remove).
+
+**Pitch slides:** exported from the Canva deck "First Pitch_Team12" to `public/images/pitch/slide-01.jpg` … `slide-14.jpg` (1280×720, under 150 kB each). In the website copies the IKEA logo on slide 4 is covered (branding rule) and the other members' emails on slide 1 are removed (only moapett@chalmers.se is published). Alt text per slide lives in `src/features/site/pitchSlides.ts`. Re-export and redo both edits if the deck changes.
 
 Content comes from the team's worksheet and pitch script. Nothing is invented: claims we cannot back up are marked TODO in the source until the team confirms them.
 
@@ -315,7 +318,7 @@ Owner of all milestones: Moa Pettersson. Teammates review when they can.
 | M2 | Engine + data | `cashback.ts` with all tests green, `products.json` (24 products) matching section 4.1 rules | TODO |
 | M3 | Customer flow | 5.2 to 5.8, 5.11 working end to end with persistence | TODO |
 | M4 | Admin | 5.9 working, saved changes reflected in shop | TODO |
-| M5 | Project website | All 9 sections of 5.1 with real content, video and slides embedded | first version 2026-10-08 |
+| M5 | Project website | All 10 sections of 5.1 with real content, video and slides embedded | first version 2026-10-08 |
 | M6 | Polish | Accessibility pass, responsive pass, anti-pattern check (`DESIGN.md` section 9), first user test done and fixes merged | TODO |
 
 Create one GitHub issue per screen/component with the acceptance criteria copied from this spec.
@@ -331,7 +334,7 @@ Create one GitHub issue per screen/component with the acceptance criteria copied
 ## 12. Open questions
 
 1. Course deadlines after 2026-10-08 (prototype, final website, final pitch).
-2. Final pitch video: where it will be hosted (unlisted YouTube suggested). Slides are in Canva ("First Pitch_Team12"); the design must be shared as "Anyone with the link" to embed it.
+2. Final pitch video: record it and host it (unlisted YouTube suggested), then set `PITCH_VIDEO_EMBED_URL`. Slides are already in the repo.
 3. Team photos.
 4. Google Form URL for the feedback link.
 
