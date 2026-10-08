@@ -1,0 +1,66 @@
+.carousel {
+  display: grid;
+  gap: var(--s-3);
+}
+
+.track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  background: var(--c-grey-200);
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  user-select: none;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-4);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-s);
+  height: var(--control-s);
+  border: 1px solid var(--c-border-subtle);
+  border-radius: var(--r-circle);
+  background: var(--c-white);
+  color: var(--c-text-1);
+  transition: border-color var(--dur) var(--ease);
+}
+
+.button:hover:not(:disabled) {
+  border-color: var(--c-border-subtle-hover);
+}
+
+.button:disabled {
+  color: var(--c-disabled-text);
+  border-color: var(--c-grey-200);
+  cursor: not-allowed;
+}
+
+.counter {
+  min-width: 5ch;
+  text-align: center;
+  font: var(--t-body-strong);
+  color: var(--c-text-1);
+  font-variant-numeric: tabular-nums;
+}

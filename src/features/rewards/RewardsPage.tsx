@@ -110,20 +110,11 @@ export function RewardsPage() {
         </h2>
         <div className={styles.how}>
           <div className={styles.howText}>
+            <p>The more sustainable the product, the higher the tier and the more points you get.</p>
             <p>
-              Every product gets a sustainability score from 0 to 100. We compare it with similar
-              products on climate, water, energy, lifespan, transport and repairability.
+              Second-hand gives <strong>{formatPct(model.secondhandBonusPct)} extra</strong>.
             </p>
-            <p>
-              The score decides the tier, and the tier decides how much cashback you get as
-              points. It's about how sustainable the product is, not how much you spend.
-            </p>
-            <p>
-              Second-hand gives you the most back: you get{' '}
-              <strong>{formatPct(model.secondhandBonusPct)} extra</strong> on top of the tier,
-              because nothing new had to be made.
-            </p>
-            <p>1 point = 1 SEK. Use your points at checkout on your next purchase.</p>
+            <p>1 point = 1 SEK at checkout.</p>
           </div>
           <InfoBox variant="bordered">
             <table className={styles.table}>

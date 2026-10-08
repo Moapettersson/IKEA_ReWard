@@ -57,34 +57,28 @@ function Explanation({ product, result, groupSize }: { product: Product; result:
     <div className={styles.prose}>
       <ol className={styles.steps}>
         <li>
-          <strong>Score:</strong> we compare {product.name} with the {groupSize - 1} other products
-          in the same group on six things: climate, water, energy, lifespan, transport and
-          repairability. It scores <strong>{result.score}/100</strong>.
+          <strong>Score:</strong> compared with {groupSize - 1} similar products, it scores{' '}
+          <strong>{result.score}/100</strong>.
         </li>
         <li>
-          <strong>Tier:</strong> {result.score}/100 puts it in <strong>tier {result.tier}</strong>
-          , which gives {formatPct(result.tierPct)} cashback.
+          <strong>Tier {result.tier}:</strong> gives {formatPct(result.tierPct)} cashback.
         </li>
         {result.overridden ? (
           <li>
-            <strong>Campaign:</strong> right now there's a campaign on this product, so you get{' '}
-            <strong>{formatPct(result.finalPct)}</strong> cashback.
+            <strong>Campaign:</strong> right now you get <strong>{formatPct(result.finalPct)}</strong>.
           </li>
         ) : (
           secondhand && (
             <li>
-              <strong>Second-hand:</strong> nothing new had to be made, so you get extra cashback on
-              top: <strong>{formatPct(result.finalPct)}</strong> in total.
+              <strong>Second-hand:</strong> extra cashback, <strong>{formatPct(result.finalPct)}</strong> in total.
             </li>
           )
         )}
         <li>
-          <strong>Points:</strong> {formatPct(result.finalPct)} of {formatSek(product.priceSek)} is{' '}
-          <strong>{formatNumber(result.points)} points</strong>, rounded down. 1 point = 1 SEK on
-          your next purchase.
+          <strong>Points:</strong> {formatPct(result.finalPct)} of {formatSek(product.priceSek)} ={' '}
+          <strong>{formatNumber(result.points)} points</strong> (1 point = 1 SEK).
         </li>
       </ol>
-      <p>The cashback depends on how sustainable the product is, not on how much you spend.</p>
     </div>
   );
 }
@@ -242,16 +236,7 @@ export function ProductPage() {
               About {co2.toFixed(1)} kg CO2e less per year of use than the cheapest alternative.
             </p>
           )}
-          {product.condition === 'secondhand' && (
-            <p className={styles.small}>
-              For second-hand products, only refurbishment and transport count, spread over the
-              remaining years of use.
-            </p>
-          )}
-          <p className={styles.small}>
-            Each bar compares this product with the others in its group: 100 is the best in the
-            group, 0 the weakest.
-          </p>
+          <p className={styles.small}>100 = best in the group, 0 = weakest.</p>
           <Simulated />
         </Accordion>
         <Accordion title="How your cashback is calculated">
