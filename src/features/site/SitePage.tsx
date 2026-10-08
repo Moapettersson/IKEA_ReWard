@@ -42,8 +42,14 @@ const [cheap, durable, secondhand] = example as [
   (typeof example)[number],
 ];
 
-// TODO(team): add a photo per person in public/images/site/team/.
-const TEAM = ['Moa Pettersson', 'Sofia Nguyen', 'Isak Treptow', 'Sara Salam', 'Max Fägersten'];
+// TODO(team): add the missing photos to public/images/site/team/. No photo = initials square.
+const TEAM: { name: string; photo?: string }[] = [
+  { name: 'Moa Pettersson', photo: '/images/site/team/moa-pettersson.jpg' },
+  { name: 'Sofia Nguyen', photo: '/images/site/team/sofia-nguyen.jpg' },
+  { name: 'Isak Treptow', photo: '/images/site/team/isak-treptow.jpg' },
+  { name: 'Sara Salam' },
+  { name: 'Max Fägersten' },
+];
 
 function initials(name: string) {
   return name
@@ -538,11 +544,22 @@ export function SitePage() {
         <Section id="team" title="Team" grey>
           <p className={styles.intro}>Group 12, TEK830 Capstone, Chalmers University of Technology.</p>
           <ul role="list" className={styles.team}>
-            {TEAM.map((name) => (
+            {TEAM.map(({ name, photo }) => (
               <li key={name}>
-                <span className={styles.avatar} aria-hidden="true">
-                  {initials(name)}
-                </span>
+                {photo ? (
+                  <img
+                    className={styles.avatar}
+                    src={photo}
+                    alt={`Portrait of ${name}`}
+                    width={480}
+                    height={480}
+                    loading="lazy"
+                  />
+                ) : (
+                  <span className={styles.avatar} aria-hidden="true">
+                    {initials(name)}
+                  </span>
+                )}
                 <h3 className={styles.h3}>{name}</h3>
               </li>
             ))}
