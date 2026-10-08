@@ -7,7 +7,7 @@ import { ScrollManager } from '../../components/DemoLayout';
 import { Footer } from '../../components/Footer';
 import { TierBadge } from '../../components/TierBadge';
 import { Wordmark } from '../../components/Wordmark';
-import { CONTACT_EMAIL, DEMO_VIDEO_EMBED_URL, PITCH_VIDEO_EMBED_URL } from '../../config';
+import { DEMO_VIDEO_EMBED_URL, PITCH_VIDEO_EMBED_URL, TEAM_CONTACTS } from '../../config';
 import { defaultModel, products } from '../../data';
 import { buildCatalogue } from '../../lib/cashback';
 import { formatPct, formatSek } from '../../lib/format';
@@ -644,9 +644,15 @@ export function SitePage() {
 
         {/* 11. Contact */}
         <Section id="contact" title="Contact" grey>
+          <ul role="list" className={styles.contacts}>
+            {TEAM_CONTACTS.map(({ name, email }) => (
+              <li key={email}>
+                {name} · <a href={`mailto:${email}`}>{email}</a>
+              </li>
+            ))}
+          </ul>
           <p className={styles.prose}>
-            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> ·{' '}
-            <Link to="/demo">Prototype</Link>
+            <Link to="/demo">Try the prototype</Link>
           </p>
         </Section>
       </main>

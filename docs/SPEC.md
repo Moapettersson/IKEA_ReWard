@@ -180,11 +180,11 @@ Single long page with anchor navigation, sections in this order. Copy in English
 8. **Team:** 5 members (Moa Pettersson, Sofia Nguyen, Isak Treptow, Sara Salam, Max Fägersten): photo and name only. Missing photos show a grey square with initials. Below the team, a black band with the white Chalmers logo (`public/images/site/chalmers-logo-white.svg`, taken from the chalmers.se header) and the course title "TEK830 Sustainable digitalization in practice", both required by the course. The Chalmers logo is the only third-party logo on the site.
 9. **References:** numbered list of sources.
 10. **Use of generative AI:** one short paragraph: Claude helped with code, brainstorming and correcting text; the team reviewed everything. Required by the course.
-11. **Contact:** moapett@chalmers.se + footer disclaimer.
+11. **Contact:** all five team members with their Chalmers email (`TEAM_CONTACTS` in `src/config.ts`) + a link to the prototype. The footer has no email; its "Contact" link goes to `/#contact`. Changed 2026-10-08: the team decided all emails are public.
 
 Removed on 2026-10-01 to keep the focus: separate Features, Sustainability impact, Real vs simulated, Process and Next steps sections. Sustainability now lives in "Does it hold up?", and "simulated" is stated in the prototype section, the demo utility bar and the footer.
 
-**Pitch slides:** exported from the Canva deck "First Pitch_Team12" to `public/images/pitch/slide-01.jpg` … `slide-14.jpg` (1280×720, under 150 kB each). In the website copies the IKEA logo on slide 4 is covered (branding rule) and the other members' emails on slide 1 are removed (only moapett@chalmers.se is published). Alt text per slide lives in `src/features/site/pitchSlides.ts`. Re-export and redo both edits if the deck changes.
+**Pitch slides:** exported from the Canva deck "First Pitch_Team12" to `public/images/pitch/slide-01.jpg` … `slide-14.jpg` (1280×720, under 150 kB each). In the website copies the IKEA logo on slide 4 is covered (branding rule). Slide 1 shows all five team emails, as in the deck. Alt text per slide lives in `src/features/site/pitchSlides.ts`. Re-export and redo the slide 4 edit if the deck changes.
 
 Content comes from the team's worksheet and pitch script. Nothing is invented: claims we cannot back up are marked TODO in the source until the team confirms them.
 
@@ -339,4 +339,4 @@ Create one GitHub issue per screen/component with the acceptance criteria copied
 3. Team photos.
 4. Google Form URL for the feedback link.
 
-Resolved on 2026-09-30: product images are flat SVG silhouettes; contact is moapett@chalmers.se; there is a feedback link in the demo.
+Resolved on 2026-09-30: product images are flat SVG silhouettes; contact is the whole team's Chalmers emails (updated 2026-10-08); there is a feedback link in the demo.

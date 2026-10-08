@@ -600,6 +600,14 @@ img.avatar {
   border-color: var(--c-red);
 }
 
+.contacts {
+  display: grid;
+  gap: var(--s-2);
+  margin-bottom: var(--s-5);
+  font: var(--t-body-l);
+  overflow-wrap: anywhere;
+}
+
 .references {
   display: grid;
   gap: var(--s-3);
