@@ -87,7 +87,6 @@ export function DemoHome() {
         <Button variant="secondary" onClick={reset}>
           Reset demo
         </Button>
-        <p>Empties your bag, restores 150 points and the default cashback model.</p>
       </div>
     </div>
   );

@@ -209,10 +209,7 @@ export function AdminPage() {
       <div className={styles.head}>
         <p className={styles.label}>Admin view: how IKEA would manage ReWard</p>
         <h1 className={styles.title}>Cashback model</h1>
-        <p className={styles.lead}>
-          Change the weights, tiers, second-hand bonus and margin cap, and see the effect on every
-          product. The shop only changes when you save.
-        </p>
+        <p className={styles.lead}>Changes reach the shop when you save.</p>
       </div>
 
       <div className={styles.layout}>
@@ -225,7 +222,7 @@ export function AdminPage() {
         >
           <fieldset className={styles.group}>
             <legend>Factor weights</legend>
-            <p className={styles.help}>0 to 50 each. The share shows how much each factor counts.</p>
+            <p className={styles.help}>0 to 50 each.</p>
             {FACTOR_KEYS.map((key) => {
               const value = draft.weights[key];
               const share = totalWeight > 0 && Number.isFinite(value) ? (value / totalWeight) * 100 : 0;
@@ -264,9 +261,6 @@ export function AdminPage() {
 
           <fieldset className={styles.group}>
             <legend>Tiers</legend>
-            <p className={styles.help}>
-              Minimum scores must go down from A to E, and cashback can't go up.
-            </p>
             <table className={styles.tierTable}>
               <thead>
                 <tr>
@@ -492,9 +486,7 @@ export function AdminPage() {
             </table>
           </div>
           <InfoBox className={styles.note}>
-            The cap is the product's margin × the max share. Overrides are for campaigns and pilots
-            and ignore the cap, so check the warning before you save. Customers never see the cap,
-            only the final percentage.
+            Cap = margin × max share. Overrides ignore the cap. Customers only see the final %.
           </InfoBox>
         </section>
       </div>
