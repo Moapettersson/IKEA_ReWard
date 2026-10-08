@@ -178,7 +178,7 @@ Like IKEA PDP "Product details": full-width rows, 1px `--c-grey-200` divider, 16
 
 - "IKEA ReWard" set as plain text in Noto Sans 700, 20px, `--c-blue`, with "ReWard" in `--c-black`. *(chosen)*
 - Never place it in a yellow oval or a blue rectangle, and never recreate the IKEA logo. That would imitate IKEA's trademark.
-- Footer on every page: "IKEA ReWard is a student concept created in the TEK830 Capstone course at Chalmers University of Technology. It is not an IKEA service. All product, price and sustainability data is simulated."
+- Footer on every page: "IKEA ReWard is a student concept created in the course TEK830 Sustainable digitalization in practice at Chalmers University of Technology. It is not an IKEA service. All product, price and sustainability data is simulated."
 
 ## 8. Tone of voice
 

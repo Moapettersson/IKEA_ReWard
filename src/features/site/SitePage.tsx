@@ -553,8 +553,7 @@ export function SitePage() {
               width={162}
               height={37}
             />
-            {/* TODO(team): replace with the exact course title. */}
-            <p>Group 12 · TEK830 Capstone</p>
+            <p>TEK830 Sustainable digitalization in practice · Group 12</p>
           </div>
         </Section>
 
@@ -588,7 +587,10 @@ export function SitePage() {
                 doi.org/10.1007/s00766-020-00336-y
               </a>
             </li>
-            <li>Chalmers University of Technology (2026). TEK830 Capstone project instructions.</li>
+            <li>
+              Chalmers University of Technology (2026). TEK830 Sustainable digitalization in
+              practice: Capstone project instructions.
+            </li>
           </ol>
         </Section>
 
