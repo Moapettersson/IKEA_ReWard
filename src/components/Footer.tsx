@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { CONTACT_EMAIL } from '../config';
 import styles from './Footer.module.css';
 
 export const DISCLAIMER =
@@ -13,7 +12,7 @@ export function Footer() {
           <Link to="/">Project website</Link>
           <Link to="/demo">Prototype</Link>
           <Link to="/demo/admin">Admin view</Link>
-          <a href={`mailto:${CONTACT_EMAIL}`}>Contact</a>
+          <Link to="/#contact">Contact</Link>
         </nav>
         <p className={styles.disclaimer}>{DISCLAIMER}</p>
       </div>

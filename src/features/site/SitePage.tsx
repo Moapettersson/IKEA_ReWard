@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { Carousel } from '../../components/Carousel';
+import { ScrollManager } from '../../components/DemoLayout';
 import { Footer } from '../../components/Footer';
 import { TierBadge } from '../../components/TierBadge';
 import { Wordmark } from '../../components/Wordmark';
@@ -155,6 +156,7 @@ export function SitePage() {
 
   return (
     <>
+      <ScrollManager />
       <a href="#main" className="skip-link">
         Skip to main content
       </a>
